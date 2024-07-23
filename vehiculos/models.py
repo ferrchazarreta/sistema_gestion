@@ -28,7 +28,7 @@ class Country(models.Model):
 
 
 # Create your models here.
-class Product(models.Model):
+class Car(models.Model):
 
   brand = models.ForeignKey(
     Brand,
