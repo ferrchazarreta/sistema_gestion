@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (
     authenticate,
     login, 
@@ -10,7 +9,6 @@ from usuario.forms import UserRegisterForm
 # Create your views here.
 
 #Rederiza el template de index.
-@login_required(login_url='login')
 def index_view(request):
     return render(
         request,
@@ -43,7 +41,7 @@ class LoginView(View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('login')
+        return redirect('index')
 
 #Rederiza el template de register y crea un nuevo registro con los datos ingresados, luego redirige al index.
 class RegisterView(View):
