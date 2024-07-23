@@ -1,5 +1,5 @@
 from django.contrib import admin
-from vehiculos.models import Car,Model,Brand,Fuel,Country
+from vehiculos.models import Car,Modelo,Brand,Fuel,Country
 from django.utils.html import format_html
 
 # Register your models here.
@@ -25,18 +25,4 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
     )
 
-    fieldsets = [
-        (
-            "Info del Producto",
-            {
-                "fields" : ["brand", "price"],
-            }
-        ),
-        (
-            "Info Extra",
-            {
-                "classes":["collapse"],
-                "fields" : ["stock", "description"]
-            }
-        )
-    ]
+    fieldsets = []
