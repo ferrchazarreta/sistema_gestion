@@ -5,7 +5,7 @@ from typing import (
 
 from vehiculos.models import (
   Car,
-  Model,
+  Modelo,
   Brand,
   Fuel,
   Country,
@@ -17,13 +17,13 @@ class CarRepository:
   def create(
     self,
     brand: Brand,
-    model_car: Model,
+    model_car: Modelo,
     year_production: str,
     door_quatity: int,
     cilindrada: int, 
     fuel_type: Fuel,
     country_production: Country,
-    image: str,
+    image: Optional[str] = None,
     price: Optional[int] = None,
     ) -> Car.objects:
       
@@ -42,7 +42,7 @@ class CarRepository:
   def update(self,
             vehiculo: Car,
             brand: Brand,
-            model_car: Model,
+            model_car: Modelo,
             year_production: str,
             door_quatity: int,
             cilindrada: int, 
