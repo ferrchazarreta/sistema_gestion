@@ -35,12 +35,14 @@
                         <li class="nav-item m-1">
                             <a class="nav-link fw-bold" href="">Categorias</a>
                         </li>
-                        <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="">Clientes</a>
-                        </li>
-                        <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="">Usuarios</a>
-                        </li>
+                            {% if user.is_staff %}
+                                <li class="nav-item m-1">
+                                    <a class="nav-link fw-bold" href="">Clientes</a>
+                                </li>
+                                <li class="nav-item m-1">
+                                    <a class="nav-link fw-bold" href="">Usuarios</a>
+                                </li>
+                            {% endif %}
                         {% endif %}
                         {% if user.is_authenticated %}
                             <a class="btn btn-outline-primary m-1" href="{% url 'logout' %}">Salir</a>
