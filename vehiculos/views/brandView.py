@@ -30,10 +30,9 @@ class BrandCreate(View):
     
     def post(self, request):
         repo = BrandsRepository()
-        name = request.POST.get('name')
-        newBrand = repo.create(nombre=name)
-
-        return redirect('brand_list', newBrand.id)
+        nombre = request.POST.get('name')
+        newBrand = repo.create(name=nombre)
+        return redirect('brand_list')
 
 class BrandDelete(View):
   def get(self, request, id):
