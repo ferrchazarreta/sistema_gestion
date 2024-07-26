@@ -37,7 +37,7 @@ class Car(models.Model):
   model_car = models.ForeignKey(
     Modelo,
     on_delete=models.CASCADE,
-    related_name='models',
+    related_name='model_car',
   )
 
   year_production = models.CharField(max_length=4)
@@ -63,4 +63,4 @@ class Car(models.Model):
   price = models.IntegerField()
 
   # def __str__(self):
-  #   return  self
+  #   return  self.brand.name

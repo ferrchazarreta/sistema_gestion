@@ -53,9 +53,9 @@ class CarRepository:
             ) -> None:
     if int(price) < 0:
       raise ValueError('El precio no puede ser menor a 0')
-    if float(cilindrada) < 0 :
+    if int(cilindrada) < 0 :
       raise ValueError('La cilindrada no puede ser menor a 0')
-    if float(door_quatity) < 0 :
+    if int(door_quatity) < 0 :
       raise ValueError('La cantidad de puertas no puede ser menor a 0')
     
     vehiculo.brand = brand

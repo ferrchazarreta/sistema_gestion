@@ -1,0 +1,31 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Vehiculos</h2>
+    {% if user.is_staff %}
+        <a href="{% url 'vehiculo_create' %}" class="btn btn-primary mb-3">Crear Producto</a>
+    {% endif %}
+    <div>
+      {% for car in cars %}
+        <div class="card" style="width: 18rem;">
+          <img src="{{car.image}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ car.model_car.name }} | {{ car.brand.name }}</h5>
+            <p class="card-text">Este vehiculo cuenta con {{ car.door_quatity }} puertas</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
+            <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
+            <li class="list-group-item">Precio: ${{ car.price}}</li>
+          </ul>
+          <div class="card-body">
+            {% if user.is_staff %}
+            <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">Editar</a>
+            <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}
