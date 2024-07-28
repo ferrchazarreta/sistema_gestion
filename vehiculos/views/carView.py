@@ -26,25 +26,12 @@ class CarCreate(View):
   def get(self, request):
     if request.user.is_staff:
       form = CarForm()
-      brandsRepo = BrandsRepository()
-      fuelRepo = FuelRepository()
-      countryRepo = CountriesRepository()
-      modelRepo = ModelsRepository()
-
-      marcas = brandsRepo.get_all()
-      combustibles = fuelRepo.get_all()
-      paises = countryRepo.get_all()
-      modelos = modelRepo.get_all()
-
+      
       return render(
         request,
         'vehiculos/create.html',
         {
           'form': form,
-          'brands': marcas,
-          'fuels': combustibles,
-          'countries': paises,
-          'models': modelos,
         }
       )
     else:
@@ -63,7 +50,7 @@ class CarCreate(View):
       brand = brandsRepo.get_by_id(id=brandId)
       fuelId = data.get('fuel_type')
       fuel = fuelRepo.get_by_id(id=fuelId)
-      countryId = data.get('country')
+      countryId = data.get('country_production')
       country = countryRepo.get_by_id(id=countryId)
       modelId = data.get('model_car')
       model = modelRepo.get_by_id(id=modelId)
@@ -74,7 +61,7 @@ class CarCreate(View):
       price = data.get('price')
 
 
-      newCar = carRepo.create(
+      carRepo.create(
         brand=brand,
         model_car=model,
         year_production=year_production,

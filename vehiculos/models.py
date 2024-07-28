@@ -62,5 +62,5 @@ class Car(models.Model):
 
   price = models.IntegerField()
 
-  # def __str__(self):
-  #   return  self.brand.name
+  def __str__(self):
+    return  self.brand.name

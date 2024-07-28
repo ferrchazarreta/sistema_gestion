@@ -2,71 +2,43 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Crear Vehiculo</h2>
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         <div class="form-group">
           <label>Marca</label>
-          <select name="brand" class="form-control">
-              <option value="">Selecciona una marca</option>
-              {% for brand in brands %}
-                  <option value="{{ brand.id }}">
-                      {{ brand.name }}
-                  </option>
-              {% endfor %}
-          </select>
+          {{form.brand}}
         </div>
         <div class="form-group">
           <label>Modelo</label>
-          <select name="model_car" class="form-control">
-              <option value="">Selecciona un Modelo</option>
-              {% for model in models %}
-                  <option value="{{ model.id }}">
-                    {{ model.name}}
-                  </option>
-              {% endfor %}
-          </select>
+          {{form.model_car}}
         </div>
         <div class="form-group">
           <label>Cilindradas</label>
-          <input type="number" step="100" name="cilindrada" class="form-control" required>
+          {{form.cilindrada}}  
         </div>
         <div class="form-group">
           <label>Año de Frabricacion</label>
-          <input type="number" step="1" name="year_production" class="form-control" required>
+          {{form.year_production}}  
         </div>
         <div class="form-group">
           <label>Cantidad de puertas</label>
-          <input type="number" step="1" name="door_quatity" class="form-control" required>
+          {{form.door_quatity}}
         </div>
         <div class="form-group">
           <label>Combustible</label>
-          <select name="fuel_type" class="form-control">
-              <option value="">Selecciona el combustible</option>
-              {% for fuel in fuels %}
-                  <option value="{{ fuel.id }}">
-                      {{ fuel.name}}
-                  </option>
-              {% endfor %}
-          </select>
+          {{form.fuel_type}}
         </div>
         <div class="form-group">
           <label>Pais</label>
-          <select name="country" class="form-control">
-              <option value="">Selecciona el pais</option>
-              {% for country in countries %}
-                  <option value="{{ country.id }}">
-                      {{ country.name}}
-                  </option>
-              {% endfor %}
-          </select>
+          {{form.country_production}}
         </div>
         <div class="form-group">
           <label>Precio</label>
-          <input type="number" step="0.01" name="price" class="form-control">
+          {{form.price}}
         </div>
         <div class="form-group">
           <label>Imagen</label>
-          <input type="file" name="image" class="form-control" >
+          {{form.image}}
         </div>
       <button type="submit" class="btn btn-primary">Crear</button>
     </form>

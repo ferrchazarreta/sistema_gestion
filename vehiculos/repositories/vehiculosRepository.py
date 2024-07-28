@@ -31,7 +31,7 @@ class CarRepository:
       brand = brand,
       model_car =  model_car,
       year_production = year_production,
-      door_quatity = door_quatity,
+      door_quatity = int(door_quatity),
       cilindrada = cilindrada,
       fuel_type = fuel_type,
       country_production = country_production,
