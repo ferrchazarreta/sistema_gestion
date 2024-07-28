@@ -42,4 +42,10 @@ class BrandForm(forms.ModelForm):
       'name',
     ]
 
+class FuelForm(forms.ModelForm):
+  class Meta:
+    model = Fuel
+    fields = [
+      'name',
+    ]
 
