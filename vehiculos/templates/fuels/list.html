@@ -1,0 +1,29 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Combustibles</h2>
+    {% if user.is_staff %}
+      <a href="{% url 'fuel_create' %}" class="btn btn-primary mb-3">Crear Combustible</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fuel in fuels %}
+            <tr>
+                <td>{{ fuel.name }}</td>
+                <td>
+                  {% if user.is_staff %}
+                    <a href="{% url 'fuel_update' fuel.id %}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'fuel_delete' fuel.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                  {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

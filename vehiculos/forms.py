@@ -41,8 +41,18 @@ class BrandForm(forms.ModelForm):
     fields = [
       'name',
     ]
-
+     
     widgets = {
       'name': forms.TextInput(attrs={'class':'form-control'})
     }
+    
+class FuelForm(forms.ModelForm):
+  class Meta:
+    model = Fuel
+    fields = [
+      'name',
+    ]
 
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
