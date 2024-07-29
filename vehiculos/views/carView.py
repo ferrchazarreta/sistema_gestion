@@ -45,6 +45,7 @@ class CarCreate(View):
       countryRepo = CountriesRepository()
       modelRepo = ModelsRepository()
       data = request.POST
+      
 
       brandId = data.get('brand')
       brand = brandsRepo.get_by_id(id=brandId)
@@ -53,24 +54,18 @@ class CarCreate(View):
       countryId = data.get('country_production')
       country = countryRepo.get_by_id(id=countryId)
       modelId = data.get('model_car')
-      model = modelRepo.get_by_id(id=modelId)
-      door_quatity = data.get('door_quatity'),
-      year_production = data.get('year_production'),
-      cilindrada = data.get('cilindrada'),
-      image = data.get('image'),
-      price = data.get('price')
-
+      model = modelRepo.get_by_id(id=modelId)  
 
       carRepo.create(
         brand=brand,
         model_car=model,
-        year_production=year_production,
-        door_quatity=door_quatity,
-        cilindrada=cilindrada,
+        year_production=data.get('year_production'),
+        door_quatity=data.get('door_quatity'),
+        cilindrada=data.get('cilindrada'),
         fuel_type=fuel,
         country_production=country,
-        image=image,
-        price=price
+        image= data.get('image'),
+        price= data.get('price'),
       )
       
       return redirect('vehiculo_list')

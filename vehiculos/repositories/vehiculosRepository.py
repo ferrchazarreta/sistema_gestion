@@ -23,15 +23,15 @@ class CarRepository:
     cilindrada: int, 
     fuel_type: Fuel,
     country_production: Country,
-    image: Optional[str] = None,
+    image:  Optional[str] = None,
     price: Optional[int] = None,
     ) -> Car.objects:
-      
+    
     return Car.objects.create(
       brand = brand,
       model_car =  model_car,
       year_production = year_production,
-      door_quatity = int(door_quatity),
+      door_quatity = door_quatity,
       cilindrada = cilindrada,
       fuel_type = fuel_type,
       country_production = country_production,
