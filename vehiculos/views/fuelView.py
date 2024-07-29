@@ -21,9 +21,13 @@ class FuelView(View):
 class FuelCreate(View):
     def get(self, request):
         if request.user.is_staff:
+            form = FuelForm()
             return render(
                 request,
-                'fuels/create.html'
+                'fuels/create.html',
+                {
+                  'form':form,
+                }
             )
         else:
             return redirect('fuel_list')
