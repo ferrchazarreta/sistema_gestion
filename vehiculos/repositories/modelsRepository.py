@@ -4,7 +4,7 @@ from typing import (
 )
 
 from vehiculos.models import (
-  Model,
+  Modelo,
 )
 
 #logger = logging.getLogger(__name__)
@@ -13,23 +13,23 @@ class ModelsRepository:
 
   def create(self,
     name: str,
-    ) -> Model.objects:
+    ) -> Modelo.objects:
       
-    return Model.objects.create(
+    return Modelo.objects.create(
       name = name,
     )
   
-  def get_all(self) -> List[Model]:
-    return Model.objects.all()
+  def get_all(self) -> List[Modelo]:
+    return Modelo.objects.all()
   
-  def delete(self, model: Model):
+  def delete(self, model: Modelo):
     model.delete()
 
-  def get_by_id(self, id: int) -> Model.objects:
-    return Model.objects.get(id=id)
+  def get_by_id(self, id: int) -> Modelo.objects:
+    return Modelo.objects.get(id=id)
   
   def update(self,
-            model: Model,
-            nombre: str,) -> Model.objects:
+            model: Modelo,
+            nombre: str,) -> Modelo.objects:
     model.name = nombre
     model.save()

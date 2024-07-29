@@ -23,10 +23,10 @@ class CarRepository:
     cilindrada: int, 
     fuel_type: Fuel,
     country_production: Country,
-    image: Optional[str] = None,
+    image:  Optional[str] = None,
     price: Optional[int] = None,
     ) -> Car.objects:
-      
+    
     return Car.objects.create(
       brand = brand,
       model_car =  model_car,
@@ -53,9 +53,9 @@ class CarRepository:
             ) -> None:
     if int(price) < 0:
       raise ValueError('El precio no puede ser menor a 0')
-    if float(cilindrada) < 0 :
+    if int(cilindrada) < 0 :
       raise ValueError('La cilindrada no puede ser menor a 0')
-    if float(door_quatity) < 0 :
+    if int(door_quatity) < 0 :
       raise ValueError('La cantidad de puertas no puede ser menor a 0')
     
     vehiculo.brand = brand
