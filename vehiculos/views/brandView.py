@@ -21,9 +21,13 @@ class BrandView(View):
 class BrandCreate(View):
     def get(self, request):
         if request.user.is_staff:
+            form = BrandForm()
             return render(
                 request,
-                'brands/create.html'
+                'brands/create.html',
+                {
+                  'form': form,
+                }
             )
         else:
             return redirect('brand_list')
