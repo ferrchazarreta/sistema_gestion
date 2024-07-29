@@ -42,4 +42,7 @@ class BrandForm(forms.ModelForm):
       'name',
     ]
 
+    widgets = {
+      'name': forms.TextInput(attrs={'class':'form-control'})
+    }
 
