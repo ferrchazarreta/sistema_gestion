@@ -5,18 +5,19 @@
     {% if user.is_staff %}
         <a href="{% url 'vehiculo_create' %}" class="btn btn-primary mb-3">Crear Producto</a>
     {% endif %}
-    <div>
+    <div class="container d-flex justify-content-center flex-wrap">
       {% for car in cars %}
-        <div class="card" style="width: 18rem;">
+        <div class="card m-2 align-self-center" style="width: 18rem;">
           <img src="{{car.image.url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ car.model_car.name }} | {{ car.brand.name }}</h5>
-            <p class="card-text">Este vehiculo cuenta con {{ car.door_quatity }} puertas</p>
+            <p class="card-text">Este vehiculo fue construido en {{car.country_production}} en el año {{car.year_production}}</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
             <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
             <li class="list-group-item">Precio: ${{ car.price}}</li>
+            <li class="list-group-item">Cant. de Puertas: {{ car.door_quatity}}</li>
           </ul>
           <div class="card-body">
             {% if user.is_staff %}

@@ -51,10 +51,10 @@ class CarCreate(View):
         form = CarForm(request.POST, request.FILES)
         if form.is_valid():
           form.save()
-          return redirect('index') #redirigue a donde deseas
+          return redirect('vehiculo_list') #redirigue a donde deseas
       else:
         form = CarForm()
-        return render(request, 'vehiculos_list', {
+        return render(request, 'vehiculo_list', {
       })
 
       
