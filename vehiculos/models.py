@@ -58,7 +58,7 @@ class Car(models.Model):
     related_name='countries',
   )
   
-  image = models.ImageField(upload_to='vehiculos_images/', null=True)
+  image = models.ImageField(upload_to='vehiculos_images/', null=True, blank=True)
 
   price = models.IntegerField()
 

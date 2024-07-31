@@ -51,7 +51,7 @@ class CarCreate(View):
         form = CarForm(request.POST, request.FILES)
         if form.is_valid():
           form.save()
-          return redirect('index')#redirigue a donde deseas
+          return redirect('index') #redirigue a donde deseas
       else:
         form = CarForm()
         return render(request, 'vehiculos_list', {
@@ -155,7 +155,9 @@ class CarUpdate(View):
       model = modelRepo.get_by_id(request.POST.get('model_car'))
       data = request.POST
       
-    
+      # Verificar si se ha cargado una nueva imagen
+      if 'image' in request.FILES:
+        car.image = request.FILES['image']
 
       carRepo.update(
         car,
