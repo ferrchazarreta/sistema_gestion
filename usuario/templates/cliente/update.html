@@ -6,17 +6,17 @@
         {% csrf_token %}
         <div class="form-group">
             <label>Nombre</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.first_name }}" required>
+            <input type="text" name="first_name" class="form-control my-1" value="{{ cliente.user.first_name }}" style="max-width: 35rem;" disabled>
             <label>Apellido</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.last_name }}" required>
+            <input type="text" name="last_name" class="form-control my-1" value="{{ cliente.user.last_name }}" style="max-width: 35rem;" disabled>
             <label>Usuario</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.username }}" required>
+            <input type="text" name="username" class="form-control my-1" value="{{ cliente.user.username }}" style="max-width: 35rem;" disabled>
             <label>Email</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.email }}" required>
+            <input type="text" name="email" class="form-control my-1" value="{{ cliente.user.email }}" style="max-width: 35rem;" disabled>
             <label>Direccion</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.address }}" required>
+            <input type="text" id="address" name="address" class="form-control my-1" value="{{ cliente.address }}" style="max-width: 35rem;" required>
             <label>Telefono</label>
-            <input type="text" name="name" class="form-control my-1" value="{{ cliente.phone }}" required>
+            <input type="text" id="phone" name="phone" class="form-control my-1" value="{{ cliente.phone }}" style="max-width: 35rem;" required>
         </div>
         <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
         <a class="btn btn-secondary mt-2" href="{% url 'cliente_list' %}">Volver a la Lista</a>
