@@ -16,7 +16,8 @@ class Cliente_View(View):
 class Cliente_Create(View):
     def get(self, request):
         if request.user.is_staff:
-            return render(request, 'cliente/create.html')
+            users = User.objects.all()
+            return render(request, 'cliente/create.html',{'users': users})
         else:
             return redirect('cliente_list')
     
@@ -32,16 +33,6 @@ class Cliente_Create(View):
                 phone=phone
             )
             return redirect('cliente_list')
-        else:
-            return redirect('cliente_list')
-
-class Cliente_Detail(View):
-    def get(self, request, id):
-        if request.user.is_staff:
-            cliente = repository.get_by_id(id)
-            return render(request, 'cliente/detail.html',
-                          {'cliente': cliente}
-                          )
         else:
             return redirect('cliente_list')
 
@@ -74,7 +65,7 @@ class Cliente_Update(View):
                 address=address,
                 phone=phone
             )
-            return redirect('cliente_detail',id)
+            return redirect('cliente_list')
         else:
             return redirect('cliente_list')
             

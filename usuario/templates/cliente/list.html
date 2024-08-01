@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Clientes</h2>
+    {% if user.is_staff %}
+        <a href="{% url 'cliente_create' %}" class="btn btn-primary mb-3">Crear Cliente</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.user.first_name }}</td>
+                <td>{{ cliente.user.email }}</td>
+                <td>{{ cliente.address }}</td>
+                <td>{{ cliente.phone }}</td>
+                <td>
+                    {% if user.is_staff %}
+                        <a href="{% url 'cliente_update' cliente.id %}" class="btn btn-success btn-sm">Editar</a>
+                        <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
