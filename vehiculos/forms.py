@@ -68,3 +68,14 @@ class CountryForm(forms.ModelForm):
     widgets = {
       'name':forms.TextInput(attrs={'class': 'form-control'}),
     }
+
+class ModelForm(forms.ModelForm):
+  class Meta:
+    model = Modelo
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
