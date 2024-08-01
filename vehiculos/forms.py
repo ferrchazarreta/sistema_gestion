@@ -57,3 +57,14 @@ class FuelForm(forms.ModelForm):
     widgets = {
       'name':forms.TextInput(attrs={'class': 'form-control'}),
     }
+
+class CountryForm(forms.ModelForm):
+  class Meta:
+    model = Country
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
