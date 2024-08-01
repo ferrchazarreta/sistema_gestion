@@ -70,7 +70,7 @@ class NewsCreate(View):
     else:
       return redirect('noticias_list')
 
-class NewDetail(View):
+class NewsDetail(View):
   def get(self, request, id):
     repo = NewRepository()
     noticia = repo.get_by_id(id=id)
@@ -78,7 +78,7 @@ class NewDetail(View):
       request,
       'noticias/detail.html',
       {
-        'news': noticia,
+        'new': noticia,
       }
     )
 
