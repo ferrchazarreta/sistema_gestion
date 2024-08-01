@@ -14,11 +14,11 @@
         <tbody>
             {% for country in countries %}
             <tr>
-                <td>{{ brand.name }}</td>
+                <td>{{ country.name }}</td>
                 <td>
                   {% if user.is_staff %}
-                    <a href="{% url 'country_update' brand.id %}" class="btn btn-success btn-sm">Editar</a>
-                    <a href="{% url 'country_delete' brand.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'country_update' country.id %}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'country_delete' country.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                   {% endif %}
                 </td>
             </tr>

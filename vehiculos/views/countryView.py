@@ -37,7 +37,7 @@ class CountryCreate(View):
     if request.user.is_staff:
       countryRepo = CountriesRepository()
       data = request.POST
-      country = data.get('country_name')
+      country = data.get('name')
 
       countryRepo.create(
         name = country
@@ -77,12 +77,11 @@ class CountryUpdate(View):
     if request.user.is_staff:
       countryRepo = CountriesRepository()
       country = countryRepo.get_by_id(id)
-      data = request.POST
-
-
+      pais = request.POST.get('name')
 
       countryRepo.update(
         country=country,
+        nombre=pais,
       )
 
       return redirect('country_list')
