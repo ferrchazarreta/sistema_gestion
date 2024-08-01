@@ -48,7 +48,7 @@ class CarRepository:
             cilindrada: int, 
             fuel_type: Fuel,
             country_production: Country,
-            image: str,
+            image: Optional[str] = None,
             price: Optional[int] = None,
             ) -> None:
     if int(price) < 0:
@@ -65,9 +65,11 @@ class CarRepository:
     vehiculo.cilindrada = cilindrada
     vehiculo.fuel_type = fuel_type
     vehiculo.country_production = country_production
-    vehiculo.image = image
     vehiculo.price = price
-
+    # Solo actualiza la imagen si se ha proporcionado una nueva
+    if image:
+        vehiculo.image = image
+        
     vehiculo.save()
 
   def get_all(self) -> List[Car]:

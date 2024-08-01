@@ -45,6 +45,18 @@ class CarCreate(View):
       countryRepo = CountriesRepository()
       modelRepo = ModelsRepository()
       data = request.POST
+
+      # codigo para guardar las imagenes dentro de los archivos
+      if request.method == 'POST':
+        form = CarForm(request.POST, request.FILES)
+        if form.is_valid():
+          form.save()
+          return redirect('vehiculo_list') #redirigue a donde deseas
+      else:
+        form = CarForm()
+        return render(request, 'vehiculo_list', {
+      })
+
       
 
       brandId = data.get('brand')
@@ -143,7 +155,9 @@ class CarUpdate(View):
       model = modelRepo.get_by_id(request.POST.get('model_car'))
       data = request.POST
       
-    
+      # Verificar si se ha cargado una nueva imagen
+      if 'image' in request.FILES:
+        car.image = request.FILES['image']
 
       carRepo.update(
         car,

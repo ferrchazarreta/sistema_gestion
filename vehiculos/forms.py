@@ -35,6 +35,7 @@ class CarForm(forms.ModelForm):
       'price': forms.NumberInput(attrs={'class': 'form-control'}),
     }
 
+
 class BrandForm(forms.ModelForm):
   class Meta:
     model = Brand

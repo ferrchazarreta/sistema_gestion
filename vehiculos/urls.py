@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.conf.urls.static import static
 from vehiculos.views.brandView import (
   BrandView,
   BrandDelete,
@@ -38,4 +40,4 @@ urlpatterns = [
   path(route='<int:id>/delete/', view=CarDelete.as_view(), name='vehiculo_delete'),
   path(route='<int:id>/update/', view=CarUpdate.as_view(), name='vehiculo_update'),
 
-]
+] 
