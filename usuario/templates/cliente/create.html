@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Crear Cliente</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Usuario:</label>
+            <select class="form-select my-2" style="max-width: 10rem;" name="user" id="user" required>
+                {% for user in users %}
+                    {% if not user.is_staff and not user.is_cliente %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <br>
+            <label>Direccion</label>
+            <input type="text" name="address" class="form-control my-1" style="max-width: 35rem;" required>
+            <label>Telefono</label>
+            <input type="number" name="phone" class="form-control my-1" style="max-width: 35rem;" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+        <a class="btn btn-secondary mt-2" href="{% url 'cliente_list' %}">Volver a la Lista</a>
+    </form>
+</div>
+{% endblock %}

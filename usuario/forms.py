@@ -34,6 +34,7 @@ class UserRegisterForm(UserCreationForm):
         user.email = self.cleaned_data.get('email')
         user.is_staff = False
         user.is_superuser = False
+        user.is_cliente = False
         if commit:
             user.save()
         return user

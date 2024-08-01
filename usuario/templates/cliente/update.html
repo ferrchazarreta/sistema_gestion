@@ -1,0 +1,25 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Actualizar Cliente</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.first_name }}" required>
+            <label>Apellido</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.last_name }}" required>
+            <label>Usuario</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.username }}" required>
+            <label>Email</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.user.email }}" required>
+            <label>Direccion</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.address }}" required>
+            <label>Telefono</label>
+            <input type="text" name="name" class="form-control my-1" value="{{ cliente.phone }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
+        <a class="btn btn-secondary mt-2" href="{% url 'cliente_list' %}">Volver a la Lista</a>
+    </form>
+</div>
+{% endblock %}
