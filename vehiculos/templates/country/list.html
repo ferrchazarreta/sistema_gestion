@@ -1,0 +1,29 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Paises</h2>
+    {% if user.is_staff %}
+      <a href="{% url 'country_create' %}" class="btn btn-primary mb-3">Crear Pais</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+            <tr>
+                <td>{{ brand.name }}</td>
+                <td>
+                  {% if user.is_staff %}
+                    <a href="{% url 'country_update' brand.id %}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'country_delete' brand.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                  {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

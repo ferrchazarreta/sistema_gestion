@@ -21,6 +21,12 @@ from vehiculos.views.carView import (
   CarUpdate,
   CarDelete,
   CarCreate,
+) 
+from vehiculos.views.countryView import (
+    CountryView,
+    CountryUpdate,
+    CountryCreate,
+    CountryDelete,
 )
 
 urlpatterns = [
@@ -39,5 +45,9 @@ urlpatterns = [
   path(route='create/', view=CarCreate.as_view(), name='vehiculo_create'),
   path(route='<int:id>/delete/', view=CarDelete.as_view(), name='vehiculo_delete'),
   path(route='<int:id>/update/', view=CarUpdate.as_view(), name='vehiculo_update'),
-
+#PAISES
+  path(route='country', view=CountryView.as_view(), name='country_list'),
+  path(route='country/create/', view=CountryCreate.as_view(), name='country_create'),
+  path(route='country/<int:id>/delete/', view=CountryDelete.as_view(), name='country_delete'),
+  path(route='country/<int:id>/update/', view=CountryUpdate.as_view(), name='country_update'),
 ] 
