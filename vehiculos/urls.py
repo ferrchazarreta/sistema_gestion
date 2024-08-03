@@ -23,16 +23,16 @@ from vehiculos.views.carView import (
   CarCreate,
 ) 
 from vehiculos.views.countryView import (
-    CountryView,
-    CountryUpdate,
-    CountryCreate,
-    CountryDelete,
+  CountryView,
+  CountryUpdate,
+  CountryCreate,
+  CountryDelete,
 )
 from vehiculos.views.modelView import (
-    ModelView,
-    ModelUpdate,
-    ModelCreate,
-    ModelDelete,
+  ModelView,
+  ModelUpdate,
+  ModelCreate,
+  ModelDelete,
 )
 
 urlpatterns = [
