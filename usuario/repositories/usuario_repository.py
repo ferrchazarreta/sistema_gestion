@@ -8,16 +8,14 @@ class Usuario_Repository:
         self, 
         username:str, 
         email:str, 
-        password1:str, 
-        password2:str, 
+        password:str, 
         first_name:str,
         last_name:str,
         ) -> User.objects:
         return User.objects.create(
             username = username,
             email = email,
-            password1 = password1,
-            password2 = password2,
+            password = password,
             first_name = first_name,
             last_name = last_name)
         
@@ -27,13 +25,16 @@ class Usuario_Repository:
     def update(self,
         usuario: User,
         username:str, 
-        email:str, 
         first_name:str,
-        last_name:str, ) -> User.objects:
+        last_name:str, 
+        email:str, 
+        password: str
+        ) -> User.objects:
         usuario.username = username
-        usuario.email = email
         usuario.first_name = first_name
         usuario.last_name = last_name
+        usuario.email = email
+        usuario.password = password
         usuario.save()
     
     def get_by_id(self, id:int) -> User.objects:

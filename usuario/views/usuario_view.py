@@ -25,15 +25,13 @@ class Usuario_Create(View):
         if request.user.is_staff:
             username = request.POST.get('username')
             email = request.POST.get('email')
-            password1 = request.POST.get('password1')
-            password2 = request.POST.get('password2')
+            password = request.POST.get('password')
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
             nuevo_usuario = repository.create(
                 username=username, 
                 email=email, 
-                password1=password1, 
-                password2=password2,
+                password=password, 
                 first_name=first_name, 
                 last_name=last_name)
             return redirect('usuario_list')
@@ -43,7 +41,7 @@ class Usuario_Create(View):
 class Usuario_Detail(View):
     def get(self, request, id):
         if request.user.is_staff:
-            usuario = get_object_or_404(User, id=id)
+            usuario = repository.get_by_id(id=id)
             return render(request, 'usuario/detail.html', {'usuario': usuario})
         else:
             return redirect('usuario_list')
@@ -60,7 +58,7 @@ class Usuario_Delete(View):
 class Usuario_Update(View):
     def get(self, request, id):
         if request.user.is_staff:
-            usuario = get_object_or_404(id=id)
+            usuario = repository.get_by_id(id=id)
             return render(request, 'usuario/update.html',
                           {'usuario': usuario}
                           )
@@ -69,19 +67,19 @@ class Usuario_Update(View):
     
     def post(self,request,id):
         if request.user.is_staff:
-            usuario =get_object_or_404(User, id=id)
+            usuario = repository.get_by_id(id=id)
+            username = request.POST.get('username')
             email = request.POST.get('email')
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
-            password1 = request.POST.get('password1')
-            password2 = request.POST.get('password2')
+            password = request.POST.get('password')
             repository.update(
                 usuario=usuario,
-                email=email,
+                username=username,
                 first_name=first_name,
                 last_name=last_name,
-                password1=password1,
-                password2=password2
+                email=email,
+                password=password,
             )
             return redirect('usuario_detail', id=id)
         else:

@@ -10,14 +10,13 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
-            'username', 'email', 'password1', 'password2', 'first_name', 'last_name'
+            'username', 'email', 'password', 'first_name', 'last_name'
         ]
 
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control custom-class'}),
             'email': forms.EmailInput(attrs={'class': 'form-control custom-class'}),
-            'password1': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
-            'password2': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control custom-class', 'required':'required'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control custom-class','required':'required'}),
         }
