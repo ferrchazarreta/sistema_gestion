@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Country(models.Model):
   name = models.CharField(max_length=100)
@@ -64,3 +65,18 @@ class Car(models.Model):
 
   def __str__(self):
     return  self.brand.name
+  
+  
+#TESTIMONIOS
+class VehiculoReview(models.Model):
+  vehiculo = models.ForeignKey(
+      Car,
+      on_delete=models.CASCADE,
+      related_name='reviews',
+  )
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
+  text = models.TextField()
+  date = models.DateField(auto_now_add=True)
+  rating = models.IntegerField()
+  def __str__(self):
+      return f'Review by {self.author.username} for {self.vehiculo.brand.name}'
