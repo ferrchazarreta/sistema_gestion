@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<div class="container mt-3">
+  <h2 class=" ms-5">{{new.title}}</h2>
+  <span class="badge text-bg-secondary ms-5">{{new.category}}</span>
+  <div class="container d-flex justify-content-center flex-wrap">
+    <img src="{{new.image.url}}" alt="">
+    <p class="p-5">{{new.long_description}}</p>
+    <p>{{new.created_at}}</p>
+  </div>
+</div>
+{% endblock %}

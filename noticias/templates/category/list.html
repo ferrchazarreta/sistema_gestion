@@ -1,9 +1,9 @@
 {% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
-    <h2>Lista de Marcas</h2>
+    <h2>Lista de Categorias</h2>
     {% if user.is_staff %}
-      <a href="{% url 'brand_create' %}" class="btn btn-primary mb-3">Crear Marca</a>
+      <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Crear Categoria</a>
     {% endif %}
     <table class="table table-striped">
         <thead>
@@ -12,13 +12,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for brand in brands %}
+            {% for category in categories %}
             <tr>
-                <td>{{ brand.name }}</td>
+                <td>{{ category.name }}</td>
                 <td>
                   {% if user.is_staff %}
-                    <a href="{% url 'brand_update' brand.id %}" class="btn btn-success btn-sm">Editar</a>
-                    <a href="{% url 'brand_delete' brand.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'category_update' category.id %}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'category_delete' category.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                   {% endif %}
                 </td>
             </tr>
