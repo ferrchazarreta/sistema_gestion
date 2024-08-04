@@ -27,16 +27,9 @@
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label>Contraseña</label>
-                                    {{ form.password1 }}
-                                    {% if form.password1.errors %}
-                                    <p style="color: red;">{{ form.password1.errors }} </p>
-                                    {% endif %}
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <label>Repita la Contraseña</label>
-                                    {{ form.password2 }}
-                                    {% if form.password2.errors %}
-                                    <p style="color: red;">{{ form.password2.errors }} </p>
+                                    {{ form.password }}
+                                    {% if form.password.errors %}
+                                    <p style="color: red;">{{ form.password.errors }} </p>
                                     {% endif %}
                                 </div>
                                 <div class="form-outline mb-4">

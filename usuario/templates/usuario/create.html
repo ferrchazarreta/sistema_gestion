@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Crear Usuario</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Usuario</label>
+            <input type="text" name="username" class="form-control" style="max-width: 35rem;" required>
+            <label>Nombre</label>
+            <input type="text" name="first_name" class="form-control" style="max-width: 35rem;" required>
+            <label>Apellido</label>
+            <input type="text" name="last_name" class="form-control" style="max-width: 35rem;" required>
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" style="max-width: 35rem;" required>
+            <label>Contraseña</label>
+            <input type="password" name="password" class="form-control" style="max-width: 35rem;" required>        
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Crear</button>
+        <a class="btn btn-secondary mt-2" href="{% url 'usuario_list' %}">Volver a la Lista</a>
+    </form>
+</div>
+{% endblock %}
