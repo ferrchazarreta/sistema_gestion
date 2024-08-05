@@ -6,26 +6,27 @@
       <a href="{% url 'noticias_create' %}" class="btn btn-primary mb-3">Crear Noticia</a>
       <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Crear Nuevas Categorias</a>
     {% endif %}
-    <div class="container d-flex justify-content-center flex-wrap">
+    <div class="container d-flex justify-content-left flex-wrap">
       {% for new in news %}
-      <div class="card m-3 position-relative" style="max-width: 540px;">
-          <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{new.image.url}}" class="img-fluid rounded-start">
+      <div class="row gx-5">
+        <div class="col-md-6 mb-4">
+          <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+            <img src="{{new.image.url}}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
           </div>
-          <div class="col-md-8">
-            <span class="badge text-bg-secondary ms-3 mt-2">{{new.category}}</span>
-            <div class="card-body">
-              <h5 class="card-title">{{new.title}}</h5>
-              <p class="card-text">{{new.short_description}}</p>
-              <p class="card-text"><small class="text-body-secondary">{{new.created_at}}</small></p>
-              <a href="{% url 'noticias_detail' new.id %}" class="btn btn-primary">Ver Mas</a>
-              {% if user.is_staff %}
-                <a href="{% url 'noticias_update' new.id %}" class="btn btn-success">Editar</a>
-                <a href="{% url 'noticias_delete' new.id %}" class="btn btn-danger">Eliminar</a>
-              {% endif %}
-            </div>
-          </div>
+        </div>
+      
+        <div class="col-md-6 mb-4">
+          <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">{{new.category}}</span>
+          <h4><strong>{{new.title}}</strong></h4>
+          <p class="text-muted">{{new.short_description}}</p>
+          <a href="{% url 'noticias_detail' new.id %}" class="btn btn-primary">Ver Mas</a>
+          {% if user.is_staff %}
+            <a href="{% url 'noticias_update' new.id %}" class="btn btn-success">Editar</a>
+            <a href="{% url 'noticias_delete' new.id %}" class="btn btn-danger">Eliminar</a>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
