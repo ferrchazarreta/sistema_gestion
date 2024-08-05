@@ -8,6 +8,10 @@
         <a href="{% url 'model_list' %}" class="btn btn-primary mb-3">Agregar Modelo</a>
         <a href="{% url 'fuel_list' %}" class="btn btn-primary mb-3">Agregar Tipo de combustible</a>
         <a href="{% url 'country_list' %}" class="btn btn-primary mb-3">Agregar Pais</a>
+        <a href="{% url 'transmission_list' %}" class="btn btn-primary mb-3">Agregar Transmision</a>
+        <a href="{% url 'condition_list' %}" class="btn btn-primary mb-3">Agregar Condicion</a>
+        <a href="{% url 'bodyWork_list' %}" class="btn btn-primary mb-3">Agregar Carroceria</a>
+        <a href="{% url 'gama_list' %}" class="btn btn-primary mb-3">Agregar Gama</a>
     {% endif %}
     <div class="container d-flex justify-content-center flex-wrap">
       {% for car in cars %}
@@ -28,6 +32,7 @@
             <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">Editar</a>
             <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">Eliminar</a>
             {% endif %}
+            <a href="{% url 'vehiculo_detail' car.id %}" class="btn btn-primary">Detalle</a>
           </div>
         </div>
       {% endfor %}

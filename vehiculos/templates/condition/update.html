@@ -1,16 +1,16 @@
 {% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
-    <h2>Actualizar Combustible</h2>
+    <h2>Actualizar Condicion</h2>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
             <label>Nombre</label>
-            <input type="text" name="name" class="form-control" value="{{ fuel.name }}" required>
+            <input type="text" name="name" class="form-control" value="{{ condition.name }}" required>
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a class="btn btn-secondary" href="{% url 'fuel_list' %}">Volver a la Lista</a>
+            <a class="btn btn-secondary" href="{% url 'condition_list' %}">Volver a la Lista</a>
         </div>
     </form>
 </div>
