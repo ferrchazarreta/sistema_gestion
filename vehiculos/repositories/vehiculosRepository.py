@@ -9,6 +9,10 @@ from vehiculos.models import (
   Brand,
   Fuel,
   Country,
+  Transmission,
+  Condition,
+  Gama,
+  BodyWork,
 )
 
 #logger = logging.getLogger(__name__)
@@ -23,6 +27,10 @@ class CarRepository:
     cilindrada: int, 
     fuel_type: Fuel,
     country_production: Country,
+    transmission:Transmission,
+    condition:Condition,
+    gama:Gama,
+    bodyWork:BodyWork,
     image:  Optional[str] = None,
     price: Optional[int] = None,
     ) -> Car.objects:
@@ -37,6 +45,10 @@ class CarRepository:
       country_production = country_production,
       image = image,
       price = price,
+      transmission = transmission,
+      condition = condition,
+      gama = gama,
+      bodyWork = bodyWork,
     )
   
   def update(self,
@@ -48,6 +60,10 @@ class CarRepository:
             cilindrada: int, 
             fuel_type: Fuel,
             country_production: Country,
+            transmission:Transmission,
+            condition:Condition,
+            gama:Gama,
+            bodyWork:BodyWork,
             image: Optional[str] = None,
             price: Optional[int] = None,
             ) -> None:
@@ -66,6 +82,10 @@ class CarRepository:
     vehiculo.fuel_type = fuel_type
     vehiculo.country_production = country_production
     vehiculo.price = price
+    vehiculo.transmission =transmission
+    vehiculo.condition = condition
+    vehiculo.gama = gama
+    vehiculo.bodyWork = bodyWork
     # Solo actualiza la imagen si se ha proporcionado una nueva
     if image:
         vehiculo.image = image

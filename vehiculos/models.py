@@ -2,26 +2,50 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Country(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=200)
   
   def __str__(self):
     return  self.name
 
 class Modelo(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=200)
 
   def __str__(self):
     return  self.name
 
 class Brand(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=200)
   
   def __str__(self):
     return  self.name
 
 class Fuel(models.Model):
-  name = models.CharField(max_length=10)
+  name = models.CharField(max_length=200)
   
+  def __str__(self):
+    return  self.name
+  
+class Transmission(models.Model):
+  name = models.CharField(max_length=200)
+
+  def __str__(self):
+    return  self.name
+  
+class Gama(models.Model):
+  name = models.CharField(max_length=200)
+
+  def __str__(self):
+    return  self.name
+  
+class Condition(models.Model):
+  name = models.CharField(max_length=200)
+
+  def __str__(self):
+    return  self.name
+  
+class BodyWork(models.Model):
+  name = models.CharField(max_length=200)
+
   def __str__(self):
     return  self.name
 
@@ -62,6 +86,32 @@ class Car(models.Model):
   image = models.ImageField(upload_to='vehiculos_images/', null=True, blank=True)
 
   price = models.IntegerField()
+
+  km = models.CharField(max_length=200, default=0)
+
+  transmission= models.ForeignKey(
+    Transmission,
+    on_delete=models.CASCADE,
+    related_name='transmission',
+  )
+
+  gama = models.ForeignKey(
+    Gama,
+    on_delete=models.CASCADE,
+    related_name='gama',
+  )
+
+  condition = models.ForeignKey(
+    Condition,
+    on_delete=models.CASCADE,
+    related_name='condition',
+  )
+
+  bodyWork = models.ForeignKey(
+    BodyWork,
+    on_delete=models.CASCADE,
+    related_name='bodyWork',
+  )
 
   def __str__(self):
     return  self.brand.name

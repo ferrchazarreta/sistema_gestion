@@ -1,0 +1,29 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Lista de Carroceria</h2>
+    {% if user.is_staff %}
+      <a href="{% url 'bodyWork_create' %}" class="btn btn-primary mb-3">Crear Carroceria</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bodyWork in bodyWorks %}
+            <tr>
+                <td>{{ bodyWork.name }}</td>
+                <td>
+                  {% if user.is_staff %}
+                    <a href="{% url 'bodyWork_update' bodyWork.id %}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'bodyWork_delete' bodyWork.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                  {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

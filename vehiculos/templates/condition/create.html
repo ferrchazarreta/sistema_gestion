@@ -1,7 +1,7 @@
 {% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
-    <h2>Crear Modelo</h2>
+    <h2>Crear condicion del vehiculo</h2>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -10,7 +10,7 @@
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-primary">Crear</button>
-            <a class="btn btn-secondary" href="{% url 'model_list' %}">Volver a la Lista</a>
+            <a class="btn btn-secondary" href="{% url 'condition_list' %}">Volver a la Lista</a>
         </div>
     </form>
 </div>
