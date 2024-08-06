@@ -60,6 +60,14 @@ from vehiculos.views.bodyWorkView import(
   BodyWorkDelete
 )
 
+from vehiculos.views.vehiculoReviewView import (
+  VehiculoReviewView,
+  VehiculoReviewCreate,
+  VehiculoReviewDelete,
+  VehiculoReviewDetail,
+  VehiculoReviewUpdate,
+)
+
 urlpatterns = [
 #COMBUSTIBLES
   path(route='fuel/', view=FuelView.as_view(), name='fuel_list'),
@@ -87,25 +95,35 @@ urlpatterns = [
   path(route='model/create/', view=ModelCreate.as_view(), name='model_create'),
   path(route='model/<int:id>/delete/', view=ModelDelete.as_view(), name='model_delete'),
   path(route='model/<int:id>/update/', view=ModelUpdate.as_view(), name='model_update'),
+  
+#TESTIMONIOS
+  path(route='testimonios/', view=VehiculoReviewView.as_view(), name='review_list'),
+  path(route='testimonios/create/', view=VehiculoReviewCreate.as_view(), name='review_create'),
+  path(route='testimonios/<int:id>/delete/', view=VehiculoReviewDelete.as_view(), name='review_delete'),
+  path(route='testimonios/<int:id>/update/', view=VehiculoReviewUpdate.as_view(), name='review_update'),
+  path(route='testimonios/<int:id>/detail/', view=VehiculoReviewDetail.as_view(), name='review_detail'),
+
 #TRANSMISIONES
   path(route='transmission/', view=TransmissionView.as_view(), name='transmission_list'),
   path(route='transmission/create/', view=TransmissionCreate.as_view(), name='transmission_create'),
   path(route='transmission/<int:id>/delete/', view=TransmissionDelete.as_view(), name='transmission_delete'),
   path(route='transmission/<int:id>/update/', view=TransmissionUpdate.as_view(), name='transmission_update'),
+  
 #CODICIONES AUTOS
   path(route='condition/', view=ConditionView.as_view(), name='condition_list'),
   path(route='condition/create/', view=ConditionCreate.as_view(), name='condition_create'),
   path(route='condition/<int:id>/delete/', view=ConditionDelete.as_view(), name='condition_delete'),
   path(route='condition/<int:id>/update/', view=ConditionUpdate.as_view(), name='condition_update'),
+  
 #GAMAS
   path(route='gama/', view=GamaView.as_view(), name='gama_list'),
   path(route='gama/create/', view=GamaCreate.as_view(), name='gama_create'),
   path(route='gama/<int:id>/delete/', view=GamaDelete.as_view(), name='gama_delete'),
   path(route='gama/<int:id>/update/', view=GamaUpdate.as_view(), name='gama_update'),
+  
 #CARROCERIAS
   path(route='bodywork/', view=BodyWorkView.as_view(), name='bodyWork_list'),
   path(route='bodywork/create/', view=BodyWorkCreate.as_view(), name='bodyWork_create'),
   path(route='bodywork/<int:id>/delete/', view=BodyWorkDelete.as_view(), name='bodyWork_delete'),
   path(route='bodywork/<int:id>/update/', view=BodyWorkUpdate.as_view(), name='bodyWork_update'),
-
 ] 

@@ -8,10 +8,13 @@ repository = Usuario_Repository()
 
 class Usuario_View(View):
     def get(self, request):
-        usuarios = repository.get_all()
-        return render(request, 'usuario/list.html', 
-                      {'usuarios': usuarios}
-                      )
+        if request.user.is_staff:
+            usuarios = repository.get_all()
+            return render(request, 'usuario/list.html', 
+                        {'usuarios': usuarios}
+                        )
+        else:
+            return redirect('index')
     
 class Usuario_Create(View):
     def get(self, request):
@@ -19,7 +22,7 @@ class Usuario_Create(View):
             users = User.objects.all()
             return render(request, 'usuario/create.html')
         else:
-            return redirect('usuario_list')
+            return redirect('index')
     
     def post(self,request):
         if request.user.is_staff:
@@ -36,7 +39,7 @@ class Usuario_Create(View):
                 last_name=last_name)
             return redirect('usuario_list')
         else:
-            return redirect('usuario_list')
+            return redirect('index')
 
 class Usuario_Detail(View):
     def get(self, request, id):
@@ -44,7 +47,7 @@ class Usuario_Detail(View):
             usuario = repository.get_by_id(id=id)
             return render(request, 'usuario/detail.html', {'usuario': usuario})
         else:
-            return redirect('usuario_list')
+            return redirect('index')
         
 class Usuario_Delete(View):
     def get(self, request, id):
@@ -53,7 +56,7 @@ class Usuario_Delete(View):
             repository.delete(usuario)
             return redirect('usuario_list')
         else:
-            return redirect('usuario_list')
+            return redirect('index')
 
 class Usuario_Update(View):
     def get(self, request, id):
@@ -63,7 +66,7 @@ class Usuario_Update(View):
                           {'usuario': usuario}
                           )
         else:
-            return redirect('usuario_list')
+            return redirect('index')
     
     def post(self,request,id):
         if request.user.is_staff:
@@ -83,5 +86,5 @@ class Usuario_Update(View):
             )
             return redirect('usuario_detail', id=id)
         else:
-            return redirect('usuario_list')
+            return redirect('index')
             

@@ -8,10 +8,13 @@ repository = Cliente_Repository()
 
 class Cliente_View(View):
     def get(self, request):
-        clientes = repository.get_all()
-        return render(request, 'cliente/list.html', 
+        if request.user.is_staff:
+            clientes = repository.get_all()
+            return render(request, 'cliente/list.html', 
                       {'clientes': clientes}
-                      )
+                          )
+        else:
+            return redirect('index')
     
 class Cliente_Create(View):
     def get(self, request):
@@ -19,7 +22,7 @@ class Cliente_Create(View):
             users = User.objects.all()
             return render(request, 'cliente/create.html',{'users': users})
         else:
-            return redirect('cliente_list')
+            return redirect('index')
     
     def post(self,request):
         if request.user.is_staff:
@@ -34,7 +37,7 @@ class Cliente_Create(View):
             )
             return redirect('cliente_list')
         else:
-            return redirect('cliente_list')
+            return redirect('index')
 
 class Cliente_Delete(View):
     def get(self, request, id):
@@ -43,7 +46,7 @@ class Cliente_Delete(View):
             repository.delete(cliente)
             return redirect('cliente_list')
         else:
-            return redirect('cliente_list')
+            return redirect('index')
 
 class Cliente_Update(View):
     def get(self, request, id):
@@ -53,7 +56,7 @@ class Cliente_Update(View):
                           {'cliente': cliente}
                           )
         else:
-            return redirect('cliente_list')
+            return redirect('index')
     
     def post(self,request,id):
         if request.user.is_staff:
@@ -67,5 +70,5 @@ class Cliente_Update(View):
             )
             return redirect('cliente_list')
         else:
-            return redirect('cliente_list')
+            return redirect('index')
             

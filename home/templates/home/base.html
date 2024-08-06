@@ -47,7 +47,7 @@ rel="stylesheet"
                             <a class="nav-link fw-bold" href="{% url 'noticias_list' %}">Noticias</a>
                         </li>
                         <li class="nav-item m-1" href="">
-                            <a class="nav-link fw-bold" href="">Testimonios</a>
+                            <a class="nav-link fw-bold" href="{% url 'review_list' %}">Testimonios</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item m-1">
