@@ -86,8 +86,8 @@ class NewsDelete(View):
     def get(self, request, id):
         if request.user.is_staff:
             repo = NewRepository()
-            vehiculo = repo.get_by_id(id=id)
-            repo.delete(vehiculo=vehiculo)
+            noticia = repo.get_by_id(id=id)
+            repo.delete(noticia=noticia)
         return redirect('noticias_list')
 
 class NewsUpdate(View):

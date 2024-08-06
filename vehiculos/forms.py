@@ -6,6 +6,10 @@ from vehiculos.models import (
   Fuel,
   Country,
   Modelo,
+  Transmission,
+  Gama,
+  BodyWork,
+  Condition,
 )
 
 class CarForm(forms.ModelForm):
@@ -21,6 +25,11 @@ class CarForm(forms.ModelForm):
       'country_production',
       'image',
       'price',      
+      'transmission',
+      'gama',
+      'condition',
+      'bodyWork',
+      'km',
     ]
       
     widgets = {
@@ -33,6 +42,11 @@ class CarForm(forms.ModelForm):
       'country_production': forms.Select(attrs={'class': 'form-control'}),
       'image': forms.FileInput(attrs={'class': 'form-control'}),
       'price': forms.NumberInput(attrs={'class': 'form-control'}),
+      'transmission': forms.Select(attrs={'class': 'form-control'}),
+      'gama': forms.Select(attrs={'class': 'form-control'}),
+      'condition':forms.Select(attrs={'class': 'form-control'}),
+      'bodyWork': forms.Select(attrs={'class': 'form-control'}),
+      'km': forms.NumberInput(attrs={'class': 'form-control'}),
     }
 
 
@@ -72,6 +86,50 @@ class CountryForm(forms.ModelForm):
 class ModelForm(forms.ModelForm):
   class Meta:
     model = Modelo
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
+class TransmissionForm(forms.ModelForm):
+  class Meta:
+    model = Transmission
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
+class ConditionForm(forms.ModelForm):
+  class Meta:
+    model = Condition
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
+class BodyWorkForm(forms.ModelForm):
+  class Meta:
+    model = BodyWork
+    fields = [
+      'name',
+    ]
+
+    widgets = {
+      'name':forms.TextInput(attrs={'class': 'form-control'}),
+    }
+
+class GamaForm(forms.ModelForm):
+  class Meta:
+    model = Gama
     fields = [
       'name',
     ]

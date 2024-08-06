@@ -8,6 +8,10 @@ from vehiculos.repositories.brandsRepository import BrandsRepository
 from vehiculos.repositories.fuelRepository import FuelRepository
 from vehiculos.repositories.countriesRepository import CountriesRepository
 from vehiculos.repositories.modelsRepository import ModelsRepository
+from vehiculos.repositories.transmissionRepository import TransmissionRepository
+from vehiculos.repositories.conditionRepository import ConditionRepository
+from vehiculos.repositories.bodyWorkRepository import BodyWorkRepository
+from vehiculos.repositories.gamaRepository import GamaRepository
 
 class CarView(View):
   def get(self, request):
@@ -44,6 +48,10 @@ class CarCreate(View):
       fuelRepo = FuelRepository()
       countryRepo = CountriesRepository()
       modelRepo = ModelsRepository()
+      transmissionRepo = TransmissionRepository()
+      conditionRepository = ConditionRepository()
+      bodyWorkRepository = BodyWorkRepository()
+      gamaRepository = GamaRepository()
       data = request.POST
 
       # codigo para guardar las imagenes dentro de los archivos
@@ -67,6 +75,14 @@ class CarCreate(View):
       country = countryRepo.get_by_id(id=countryId)
       modelId = data.get('model_car')
       model = modelRepo.get_by_id(id=modelId)  
+      transmissionId = data.get('transmission')
+      transmission = transmissionRepo.get_by_id(id=transmissionId)
+      conditionId = data.get('condition')
+      condition = conditionRepository.get_by_id(id=conditionId)
+      gamaId = data.get('gama')
+      gama = gamaRepository.get_by_id(id=gamaId)
+      bodyWorkId = data.get('bodyWork')
+      bodyWork = bodyWorkRepository.get_by_id(id=bodyWorkId)
 
       carRepo.create(
         brand=brand,
@@ -78,29 +94,28 @@ class CarCreate(View):
         country_production=country,
         image= data.get('image'),
         price= data.get('price'),
+        transmission=transmission,
+        condition=condition,
+        gama=gama,
+        body_work=bodyWork,
       )
       
       return redirect('vehiculo_list')
     else:
       return redirect('vehiculo_list')
 
-# class ProductDetail(View):
-#     def get(self, request, id):
-#         repo = ProductosRepository()
-#         producto = repo.get_by_id(id=id)
-#         try:
-#             imagen = ProductImage.objects.get(product=producto)
-#         except:
-#             imagen = None
+class CarDetail(View):
+    def get(self, request, id):
+        repo = CarRepository()
+        vehiculo = repo.get_by_id(id=id)
 
-#         return render(
-#             request,
-#             'product/detail.html',
-#             {
-#                 'product': producto,
-#                 'image': imagen,
-#             }
-#         )
+        return render(
+            request,
+            'vehiculos/detail.html',
+            {
+              'car': vehiculo,
+            }
+        )
 
 class CarDelete(View):
     def get(self, request, id):
@@ -118,6 +133,10 @@ class CarUpdate(View):
       fuelRepo = FuelRepository()
       countryRepo = CountriesRepository()
       modelRepo = ModelsRepository()
+      transmissionRepo = TransmissionRepository()
+      conditionRepository = ConditionRepository()
+      bodyWorkRepository = BodyWorkRepository()
+      gamaRepository = GamaRepository()
 
 
       vehiculo = carRepo.get_by_id(id)
@@ -125,6 +144,10 @@ class CarUpdate(View):
       combustibles = fuelRepo.get_all()
       paises = countryRepo.get_all()
       modelos = modelRepo.get_all()
+      transmisiones = transmissionRepo.get_all()
+      condicion = conditionRepository.get_all()
+      carroceria = bodyWorkRepository.get_all()
+      gama = gamaRepository.get_all()
 
       return render(
         request,
@@ -135,6 +158,10 @@ class CarUpdate(View):
           'fuels': combustibles,
           'countries': paises,
           'models': modelos,
+          'transmissions':transmisiones,
+          'conditions': condicion,
+          'bodyWorks': carroceria,
+          'gamas':gama,
         }
       )
     else:
@@ -147,12 +174,20 @@ class CarUpdate(View):
       fuelRepo = FuelRepository()
       countryRepo = CountriesRepository()
       modelRepo = ModelsRepository()
+      transmissionRepo = TransmissionRepository()
+      conditionRepository = ConditionRepository()
+      bodyWorkRepository = BodyWorkRepository()
+      gamaRepository = GamaRepository()
 
       car = carRepo.get_by_id(id)
       brand = brandsRepo.get_by_id(request.POST.get('brand'))
       fuel = fuelRepo.get_by_id(request.POST.get('fuel_type'))
       country = countryRepo.get_by_id(request.POST.get('country'))
       model = modelRepo.get_by_id(request.POST.get('model_car'))
+      transmission = transmissionRepo.get_by_id(request.POST.get('transmission'))
+      condition = conditionRepository.get_by_id(request.POST.get('condition'))
+      bodyWork = bodyWorkRepository.get_by_id(request.POST.get('bodyWork'))
+      gama = gamaRepository.get_by_id(request.POST.get('gama'))
       data = request.POST
       
       # Verificar si se ha cargado una nueva imagen
@@ -169,8 +204,11 @@ class CarUpdate(View):
         year_production=data.get('year_production'),
         door_quatity= data.get('door_quatity'),
         cilindrada=data.get('cilindrada'),
-        image=data.get('image')
-
+        image=data.get('image'),
+        transmission=transmission,
+        condition=condition,
+        bodyWork=bodyWork,
+        gama=gama,
       )
 
       return redirect('vehiculo_list')
