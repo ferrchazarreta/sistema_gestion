@@ -35,6 +35,14 @@ from vehiculos.views.modelView import (
   ModelDelete,
 )
 
+from vehiculos.views.vehiculoReviewView import (
+  VehiculoReviewView,
+  VehiculoReviewCreate,
+  VehiculoReviewDelete,
+  VehiculoReviewDetail,
+  VehiculoReviewUpdate,
+)
+
 urlpatterns = [
 #COMBUSTIBLES
   path(route='fuel/', view=FuelView.as_view(), name='fuel_list'),
@@ -61,4 +69,11 @@ urlpatterns = [
   path(route='model/create/', view=ModelCreate.as_view(), name='model_create'),
   path(route='model/<int:id>/delete/', view=ModelDelete.as_view(), name='model_delete'),
   path(route='model/<int:id>/update/', view=ModelUpdate.as_view(), name='model_update'),
+  
+#TESTIMONIOS
+  path(route='testimonios/', view=VehiculoReviewView.as_view(), name='review_list'),
+  path(route='testimonios/create/', view=VehiculoReviewCreate.as_view(), name='review_create'),
+  path(route='testimonios/<int:id>/delete/', view=VehiculoReviewDelete.as_view(), name='review_delete'),
+  path(route='testimonios/<int:id>/update/', view=VehiculoReviewUpdate.as_view(), name='review_update'),
+  path(route='testimonios/<int:id>/detail/', view=VehiculoReviewDetail.as_view(), name='review_detail'),
 ] 

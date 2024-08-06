@@ -66,6 +66,8 @@ class Car(models.Model):
   def __str__(self):
     return  self.brand.name
   
+  def info_car(self):
+    return f"{self.brand} {self.model_car}, Año {self.year_production}"
   
 #TESTIMONIOS
 class VehiculoReview(models.Model):

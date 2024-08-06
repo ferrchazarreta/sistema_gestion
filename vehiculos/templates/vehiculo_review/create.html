@@ -1,0 +1,27 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Deja una opinion</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Vehiculo</label>
+            <select name="id_vehiculo" class="form-control">
+                <option value="">Selecciona un vehiculo</option>
+                {% for vehiculo in vehiculos %}
+                    <option value="{{ vehiculo.id }}">{{ vehiculo.info_car }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Opinion</label>
+            <textarea name="opinion" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Valoracion</label>
+            <input type="number" name="rating" step="1" min="1" max="10" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

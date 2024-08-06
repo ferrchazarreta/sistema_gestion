@@ -17,23 +17,29 @@ class VehiculoReviewView(View):
     
 class VehiculoReviewCreate(View):
     def get(self, request):
-        repo = CarRepository()
-        vehiculos = repo.get_all()
-        return render(
-            request,
-            'vehiculo_review/create.html',
-            {'vehiculos': vehiculos},
-        )
+        if request.user.is_cliente:
+            repo = CarRepository()
+            vehiculos = repo.get_all()
+            return render(
+                request,
+                'vehiculo_review/create.html',
+                {'vehiculos': vehiculos},
+            )
+        else:
+            return redirect('review_list')
     
     def post(self, request):
-        repo = ReviewRepository()
-        id_vehiculo = request.POST.get('id_vehiculo')
-        opinion = request.POST.get('opinion')
-        rating =  request.POST.get('rating')
-        user = request.user
-        repo.create(id_vehiculo, user, opinion, rating)
-        return redirect('review_list')
-
+        if request.user.is_cliente:
+            repo = ReviewRepository()
+            id_vehiculo = request.POST.get('id_vehiculo')
+            opinion = request.POST.get('opinion')
+            rating =  request.POST.get('rating')
+            user = request.user
+            repo.create(id_vehiculo, user, opinion, rating)
+            return redirect('review_list')
+        else:
+            return redirect('review_list')
+        
 class VehiculoReviewDetail(View):
     def get(self, request, id):
         repo = ReviewRepository()
@@ -46,7 +52,7 @@ class VehiculoReviewDetail(View):
 
 class VehiculoReviewUpdate(View):
     def get(self, request, id):
-        if request.user.is_authenticated:
+        if request.user.is_cliente:
             repo = ReviewRepository()
             review = repo.get_by_id(id=id)
             return render(
@@ -58,7 +64,7 @@ class VehiculoReviewUpdate(View):
             return redirect('review_list')
 
     def post(self, request, id):
-        if request.user.is_authenticated:
+        if request.user.is_cliente:
             repo = ReviewRepository()
             review = repo.get_by_id(id)
             opinion = request.POST.get('opinion')
@@ -66,12 +72,17 @@ class VehiculoReviewUpdate(View):
             review.text = opinion
             review.rating = rating
             review.save()
-        return redirect('review_list')
+            return redirect('review_list')
+        else:
+            return redirect('review_list')
 
 class VehiculoReviewDelete(View):
     def get(self, request, id):
-        if request.user.is_authenticated:
+        if request.user.is_cliente:
             repo = ReviewRepository()
             review = repo.get_by_id(id=id)
             repo.delete(review=review)
-        return redirect('review_list')
+            return redirect('review_list')
+        else:
+            return redirect('review_list')
+            
