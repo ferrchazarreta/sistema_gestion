@@ -119,7 +119,13 @@ class CarRepository:
     self,
     brand = Brand,
   ) -> List[Car]:
-    return Car.objects.filter(brands = brand)
+    return Car.objects.filter(brand = brand)
+  
+  def filter_by_condition(
+    self,
+    condition = Condition,
+  ) -> List[Car]:
+    return Car.objects.filter(condition = condition)
 
   def delete(self, vehiculo: Car):
       vehiculo.delete()
