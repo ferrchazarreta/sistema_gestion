@@ -241,7 +241,7 @@ class CarByBrand(View):
     bodyWorkRepo = BodyWorkRepository()
     gamaRepo = GamaRepository()
     transmissionRepo = TransmissionRepository()
-    fuelRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
     brandRepo = BrandsRepository()
     conditions = conditionRepo.get_all()
     bodyWorks = bodyWorkRepo.get_all()
@@ -272,7 +272,7 @@ class CarByCondition(View):
     bodyWorkRepo = BodyWorkRepository()
     gamaRepo = GamaRepository()
     transmissionRepo = TransmissionRepository()
-    fuelRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
     brandRepo = BrandsRepository()
     conditions = conditionRepo.get_all()
     bodyWorks = bodyWorkRepo.get_all()
@@ -295,3 +295,128 @@ class CarByCondition(View):
         'brands': brands,
       }
     )
+
+class CarByGama(View):
+  def get(self, request, id):
+    carRepo = CarRepository()
+    conditionRepo = ConditionRepository()
+    bodyWorkRepo = BodyWorkRepository()
+    gamaRepo = GamaRepository()
+    transmissionRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
+    brandRepo = BrandsRepository()
+    conditions = conditionRepo.get_all()
+    bodyWorks = bodyWorkRepo.get_all()
+    gamas = gamaRepo.get_all()
+    transmissions = transmissionRepo.get_all()
+    fuels = fuelRepo.get_all()
+    brands = brandRepo.get_all()
+    gama = gamaRepo.get_by_id(id=id)
+    vehiculo = carRepo.filter_by_gama(gama=gama)
+    return render(
+      request,
+      'vehiculos/list.html',
+      {
+        'cars': vehiculo,
+        'conditions':conditions,
+        'bodyWorks': bodyWorks,
+        'gamas': gamas,
+        'transmissions': transmissions,
+        'fuels': fuels,
+        'brands': brands,
+      }
+    )
+
+class CarByBodyWork(View):
+  def get(self, request, id):
+    carRepo = CarRepository()
+    conditionRepo = ConditionRepository()
+    bodyWorkRepo = BodyWorkRepository()
+    gamaRepo = GamaRepository()
+    transmissionRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
+    brandRepo = BrandsRepository()
+    conditions = conditionRepo.get_all()
+    bodyWorks = bodyWorkRepo.get_all()
+    gamas = gamaRepo.get_all()
+    transmissions = transmissionRepo.get_all()
+    fuels = fuelRepo.get_all()
+    brands = brandRepo.get_all()
+    bodyWork = bodyWorkRepo.get_by_id(id=id)
+    vehiculo = carRepo.filter_by_bodyWork(bodyWork=bodyWork)
+    return render(
+      request,
+      'vehiculos/list.html',
+      {
+        'cars': vehiculo,
+        'conditions':conditions,
+        'bodyWorks': bodyWorks,
+        'gamas': gamas,
+        'transmissions': transmissions,
+        'fuels': fuels,
+        'brands': brands,
+      }
+    )
+  
+class CarByFuel(View):
+  def get(self, request, id):
+    carRepo = CarRepository()
+    conditionRepo = ConditionRepository()
+    bodyWorkRepo = BodyWorkRepository()
+    gamaRepo = GamaRepository()
+    transmissionRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
+    brandRepo = BrandsRepository()
+    conditions = conditionRepo.get_all()
+    bodyWorks = bodyWorkRepo.get_all()
+    gamas = gamaRepo.get_all()
+    transmissions = transmissionRepo.get_all()
+    fuels = fuelRepo.get_all()
+    brands = brandRepo.get_all()
+    fuel = fuelRepo.get_by_id(id=id)
+    vehiculo = carRepo.filter_by_fuel(fuel_type=fuel)
+    return render(
+      request,
+      'vehiculos/list.html',
+      {
+        'cars': vehiculo,
+        'conditions':conditions,
+        'bodyWorks': bodyWorks,
+        'gamas': gamas,
+        'transmissions': transmissions,
+        'fuels': fuels,
+        'brands': brands,
+      }
+    )
+
+class CarByTransmission(View):
+  def get(self, request, id):
+    carRepo = CarRepository()
+    conditionRepo = ConditionRepository()
+    bodyWorkRepo = BodyWorkRepository()
+    gamaRepo = GamaRepository()
+    transmissionRepo = TransmissionRepository()
+    fuelRepo = FuelRepository()
+    brandRepo = BrandsRepository()
+    conditions = conditionRepo.get_all()
+    bodyWorks = bodyWorkRepo.get_all()
+    gamas = gamaRepo.get_all()
+    transmissions = transmissionRepo.get_all()
+    fuels = fuelRepo.get_all()
+    brands = brandRepo.get_all()
+    transmission = transmissionRepo.get_by_id(id=id)
+    vehiculo = carRepo.filter_by_transmission(transmission=transmission)
+    return render(
+      request,
+      'vehiculos/list.html',
+      {
+        'cars': vehiculo,
+        'conditions':conditions,
+        'bodyWorks': bodyWorks,
+        'gamas': gamas,
+        'transmissions': transmissions,
+        'fuels': fuels,
+        'brands': brands,
+      }
+    )
+
