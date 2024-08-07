@@ -13,6 +13,18 @@
         <a href="{% url 'bodyWork_list' %}" class="btn btn-primary mb-3">Agregar Carroceria</a>
         <a href="{% url 'gama_list' %}" class="btn btn-primary mb-3">Agregar Gama</a>
     {% endif %}
+    <div class="dropdown m-1">
+      <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
+        class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-mdb-toggle="dropdown" aria-expanded="false">
+        Condicion
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for condition in conditions %}
+        <li><a class="dropdown-item" href="{% url 'filter_condition' condition.id %}">{{condition.name}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
     <div class="container d-flex justify-content-center flex-wrap">
       {% for car in cars %}
         <div class="card m-2 align-self-center" style="width: 18rem;">

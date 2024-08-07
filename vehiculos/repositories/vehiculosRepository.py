@@ -120,6 +120,36 @@ class CarRepository:
     brand = Brand,
   ) -> List[Car]:
     return Car.objects.filter(brands = brand)
+    
+  def filter_by_condition(
+    self,
+    condition = Condition,
+  ) -> List[Car]:
+    return Car.objects.filter(condition = condition)
+  
+  def filter_by_bodyWork(
+    self,
+    carroceria = BodyWork,
+  ) -> List[Car]:
+    return Car.objects.filter(bodyWork = carroceria)
+
+  def filter_by_gama(
+    self,
+    gama = Gama,
+  ) -> List[Car]:
+    return Car.objects.filter(gama = gama)
+  
+  def filter_by_fuel(
+    self,
+    fuel = Fuel,
+  ) -> List[Car]:
+    return Car.objects.filter(fuel_type = fuel)
+  
+  def filter_by_transmission(
+    self,
+    transmission = Transmission,
+  ) -> List[Car]:
+    return Car.objects.filter(transmission = transmission)
 
   def delete(self, vehiculo: Car):
       vehiculo.delete()
