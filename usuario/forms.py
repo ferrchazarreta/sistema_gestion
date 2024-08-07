@@ -10,13 +10,14 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
-            'username', 'email', 'password', 'first_name', 'last_name'
+            'username', 'email', 'password1', 'password2', 'first_name', 'last_name'
         ]
 
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control custom-class'}),
             'email': forms.EmailInput(attrs={'class': 'form-control custom-class'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control custom-class', 'required':'required'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control custom-class','required':'required'}),
         }
@@ -28,12 +29,19 @@ class UserRegisterForm(UserCreationForm):
             raise ValidationError("El email ya se encuetra registrado")
         return email
     
+    def equals_password(self):
+        cleaned_data = super().clean()
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 != password2:
+            raise ValidationError("Las contraseñas no coinciden")
+        return (cleaned_data)
+            
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data.get('email')
         user.is_staff = False
         user.is_superuser = False
-        user.is_cliente = False
         if commit:
             user.save()
         return user

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 
 from usuario.repositories.usuario_repository import Usuario_Repository
+from usuario.forms import UserRegisterForm
 
 repository = Usuario_Repository()
 
@@ -17,27 +18,30 @@ class Usuario_View(View):
             return redirect('index')
     
 class Usuario_Create(View):
+    form_class = UserRegisterForm
     def get(self, request):
         if request.user.is_staff:
-            users = User.objects.all()
-            return render(request, 'usuario/create.html')
+            form = self.form_class()
+            return render(
+                request, 
+                'usuario/create.html',
+                {'form': form}
+                )
         else:
             return redirect('index')
     
     def post(self,request):
         if request.user.is_staff:
-            username = request.POST.get('username')
-            email = request.POST.get('email')
-            password = request.POST.get('password')
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
-            nuevo_usuario = repository.create(
-                username=username, 
-                email=email, 
-                password=password, 
-                first_name=first_name, 
-                last_name=last_name)
-            return redirect('usuario_list')
+            form = self.form_class(request.POST)
+            if form.is_valid():
+                user = form.save()
+                return redirect('usuario_list')
+            else:
+                return render(
+                    request, 
+                    'usuario/create.html', 
+                    {'form': form}
+                    )
         else:
             return redirect('index')
 
