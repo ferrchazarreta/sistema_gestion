@@ -6,15 +6,17 @@
         {% csrf_token %}
         <div class="form-group">
             <label>Usuario</label>
-            <input type="text" name="username" class="form-control" style="max-width: 35rem;" required>
+            {{ form.username }}
             <label>Nombre</label>
-            <input type="text" name="first_name" class="form-control" style="max-width: 35rem;" required>
+            {{ form.first_name }}
             <label>Apellido</label>
-            <input type="text" name="last_name" class="form-control" style="max-width: 35rem;" required>
+            {{ form.last_name }}
             <label>Email</label>
-            <input type="email" name="email" class="form-control" style="max-width: 35rem;" required>
+            {{ form.email }}
             <label>Contraseña</label>
-            <input type="password" name="password" class="form-control" style="max-width: 35rem;" required>        
+            {{ form.password1 }}  
+            <label>Repita la contraseña</label>
+            {{ form.password2 }}       
         </div>
         <button type="submit" class="btn btn-primary mt-2">Crear</button>
         <a class="btn btn-secondary mt-2" href="{% url 'usuario_list' %}">Volver a la Lista</a>

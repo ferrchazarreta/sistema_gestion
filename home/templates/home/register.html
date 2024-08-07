@@ -14,23 +14,18 @@
                                 <div class="form-outline mb-4">
                                     <label>Nombre de Usuario</label>
                                     {{ form.username }}
-                                    {% if form.username.errors %}
-                                    <p style="color: red;">{{ form.username.errors }} </p>
-                                    {% endif %}
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label>Email</label>
                                     {{ form.email }}
-                                    {% if form.email.errors %}
-                                    <div id="error">{{ form.email.errors }} </div>
-                                    {% endif %}
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label>Contraseña</label>
-                                    {{ form.password }}
-                                    {% if form.password.errors %}
-                                    <p style="color: red;">{{ form.password.errors }} </p>
-                                    {% endif %}
+                                    {{ form.password1 }}
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label>Repita la contraseña</label>
+                                    {{ form.password2 }}
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label>Nombre</label>
@@ -50,9 +45,4 @@
         </div>
     </div>
 </section>
-<style>
-    #error>li>ul {
-        color: red
-    }
-</style>
 {% endblock %}
