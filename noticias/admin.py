@@ -1,5 +1,5 @@
 from django.contrib import admin
-from noticias.models import News,Category
+from noticias.models import News,Category,Notification
 from django.utils.html import format_html
 
 # Register your models here.
@@ -21,13 +21,20 @@ class NoticiasAdmin(admin.ModelAdmin):
 
     )
 
-    fieldsets = [
-    ]
+    fieldsets = []
 
 @admin.register(Category)
 class NoticiasAdmin(admin.ModelAdmin):
     empty_value_display = "No hay datos para este campo"
     list_display = (
       'name',
+    )
+    fieldsets = []
+    
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+    empty_value_display = "No hay datos para este campo"
+    list_display = (
+      'message',
     )
     fieldsets = []
