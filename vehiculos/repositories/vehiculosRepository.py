@@ -119,7 +119,7 @@ class CarRepository:
     self,
     brand = Brand,
   ) -> List[Car]:
-    return Car.objects.filter(brands = brand)
+    return Car.objects.filter(brand = brand)
     
   def filter_by_condition(
     self,
