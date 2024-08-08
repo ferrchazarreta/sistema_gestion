@@ -4,19 +4,21 @@
     <h2>Crear Usuario</h2>
     <form method="post">
         {% csrf_token %}
-        <div class="form-group">
-            <label>Usuario</label>
+        <div class="form-group my-3">
+            <label class="my-1">Usuario</label>
             {{ form.username }}
-            <label>Nombre</label>
+            <label class="my-1">Nombre</label>
             {{ form.first_name }}
-            <label>Apellido</label>
+            <label class="my-1">Apellido</label>
             {{ form.last_name }}
-            <label>Email</label>
-            {{ form.email }}
-            <label>Contraseña</label>
-            {{ form.password1 }}  
-            <label>Repita la contraseña</label>
-            {{ form.password2 }}       
+            <div class="d-flex flex-column">
+                <label class="my-1">Email</label>
+                {{ form.email }}
+                <label class="my-1">Contraseña</label>
+                {{ form.password1 }}  
+                <label class="my-1">Repita la contraseña</label>
+                {{ form.password2 }}       
+            </div>
         </div>
         <button type="submit" class="btn btn-primary mt-2">Crear</button>
         <a class="btn btn-secondary mt-2" href="{% url 'usuario_list' %}">Volver a la Lista</a>

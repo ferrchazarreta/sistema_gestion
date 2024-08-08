@@ -4,11 +4,11 @@
     <h2>Actualizar Noticia</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group my-3">
           <label>Title</label>
           <input type="text" name="title" class="form-control" value="{{new.title }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group my-3">
           <label>Categoria</label>
           <select name="category" class="form-control">
               <option value="">Selecciona una categoria</option>
@@ -19,20 +19,20 @@
               {% endfor %}
           </select>
         </div>
-        </div>
-        <div class="form-group">
+        <div class="form-group my-3">
           <label>Descripcion corta</label>
           <input type="text"  name="short_description" class="form-control" value="{{ new.short_description }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group my-3">
           <label>Descripcion detallada de la noticia</label>
           <input type="text"  name="long_description" class="form-control" value="{{ new.long_description }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group my-3">
           <label>Imagen</label>
           <input type="file" name="image" class="form-control" >
         </div>
-      <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+      </div>
     </form>
 </div>
 {% endblock %}

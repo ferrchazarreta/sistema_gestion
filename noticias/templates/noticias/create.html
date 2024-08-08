@@ -4,27 +4,27 @@
     <h2>Crear Noticia</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Titulo</label>
           {{form.title}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Categoria</label>
           {{form.category}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Descripcion corta</label>
           {{form.short_description}}  
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Descripcion detallada de la noticia</label>
           {{form.long_description}}  
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Imagen</label>
           {{form.image}}
         </div>
-      <button type="submit" class="btn btn-primary">Crear</button>
+      <button type="submit" class="btn btn-primary mt-3">Crear</button>
     </form>
 </div>
 {% endblock %}
