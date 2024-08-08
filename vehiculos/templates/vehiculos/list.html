@@ -20,8 +20,23 @@
         Condición
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for bodywork in bodyworks %}
+        <li><a class="dropdown-item" href="{% url 'filter_bodywork' bodywork.id %}">{{bodywork.name}}</a></li>
+        {% endfor %}
         {% for condition in conditions %}
         <li><a class="dropdown-item" href="{% url 'filter_condition' condition.id %}">{{condition.name}}</a></li>
+        {% endfor %}
+        {% for fuel in fuels %}
+        <li><a class="dropdown-item" href="{% url 'filter_fuel' fuel.id %}">{{fuel.name}}</a></li>
+        {% endfor %}
+        {% for gama in gamas %}
+        <li><a class="dropdown-item" href="{% url 'filter_gama' gama.id %}">{{gama.name}}</a></li>
+        {% endfor %}
+        {% for transmission in transmissions %}
+        <li><a class="dropdown-item" href="{% url 'filter_transmission' transmission.id %}">{{transmission.name}}</a></li>
+        {% endfor %}
+        {% for brand in brands %}
+        <li><a class="dropdown-item" href="{% url 'filter_brand' brand.id %}">{{brand.name}}</a></li>
         {% endfor %}
       </ul>
     </div>

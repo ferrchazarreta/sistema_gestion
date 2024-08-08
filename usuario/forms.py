@@ -12,9 +12,10 @@ class UserRegisterForm(UserCreationForm):
         fields = [
             'username', 'email', 'password1', 'password2', 'first_name', 'last_name'
         ]
+        
 
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control custom-class'}),
+            'username': forms.TextInput(attrs={'class': 'form-control custom-class','value':'asdasdsa'}),
             'email': forms.EmailInput(attrs={'class': 'form-control custom-class'}),
             'password1': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
