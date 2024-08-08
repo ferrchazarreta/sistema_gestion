@@ -7,17 +7,19 @@ from vehiculos.repositories.brandsRepository import BrandsRepository
 
 class BrandView(View):
   def get(self, request):
-    repo = BrandsRepository()
-    marcas = repo.get_all()
+    if request.user.is_staff:
+      repo = BrandsRepository()
+      marcas = repo.get_all()
 
-    return render(
-      request,
-      'brands/list.html',
-      {
-        'brands': marcas
-      }
-    )
-
+      return render(
+        request,
+        'brands/list.html',
+        {
+          'brands': marcas
+        }
+      )
+    else:
+       return redirect('index')
 class BrandCreate(View):
     def get(self, request):
         if request.user.is_staff:

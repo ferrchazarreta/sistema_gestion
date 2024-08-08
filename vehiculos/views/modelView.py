@@ -7,16 +7,19 @@ from vehiculos.repositories.modelsRepository import ModelsRepository
 
 class ModelView(View):
   def get(self, request):
-    repo = ModelsRepository()
-    models = repo.get_all()
+    if request.user.is_staff:
+      repo = ModelsRepository()
+      models = repo.get_all()
 
-    return render(
-      request,
-      'model/list.html',
-      {
-        'models': models
-      }
-      )
+      return render(
+        request,
+        'model/list.html',
+        {
+          'models': models
+        }
+        )
+    else:
+      return redirect('index')
 
 class ModelCreate(View):
   def get(self, request):

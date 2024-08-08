@@ -7,9 +7,9 @@ from vehiculos.repositories.bodyWorkRepository import BodyWorkRepository
 
 class BodyWorkView(View):
   def get(self, request):
-    repo = BodyWorkRepository()
-    bodyWork = repo.get_all()
     if request.user.is_staff:
+      repo = BodyWorkRepository()
+      bodyWork = repo.get_all()
       return render(
         request,
         'bodyWork/list.html',

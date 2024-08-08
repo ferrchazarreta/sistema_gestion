@@ -7,16 +7,19 @@ from vehiculos.repositories.countriesRepository import CountriesRepository
 
 class CountryView(View):
   def get(self, request):
-    repo = CountriesRepository()
-    countries = repo.get_all()
+    if request.user.is_staff:
+      repo = CountriesRepository()
+      countries = repo.get_all()
 
-    return render(
-      request,
-      'country/list.html',
-      {
-        'countries': countries
-      }
+      return render(
+        request,
+        'country/list.html',
+        {
+          'countries': countries
+        }
       )
+    else:
+      return redirect('fuel_list')
 
 class CountryCreate(View):
   def get(self, request):

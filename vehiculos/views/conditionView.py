@@ -7,16 +7,16 @@ from vehiculos.repositories.conditionRepository import ConditionRepository
 
 class ConditionView(View):
   def get(self, request):
-    repo = ConditionRepository()
-    condition = repo.get_all()
     if request.user.is_staff:
+      repo = ConditionRepository()
+      condition = repo.get_all()
       return render(
-        request,
-        'condition/list.html',
-        {
-          'conditions': condition
-        }
-      )
+          request,
+          'condition/list.html',
+          {
+            'conditions': condition
+          }
+        )
     else:
       return redirect('index')
 
