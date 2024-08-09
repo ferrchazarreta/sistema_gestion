@@ -4,7 +4,7 @@
     <h2>Mira las ultimas novedades del mercado</h2>
     {% if user.is_staff %}
       <a href="{% url 'noticias_create' %}" class="btn btn-primary mb-3">Crear Noticia</a>
-      <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Crear Nuevas Categorias</a>
+      <a href="{% url 'category_list' %}" class="btn btn-primary mb-3">Crear Nuevas Categorias</a>
     {% endif %}
     <div class="container d-flex justify-content-left flex-wrap">
       {% for new in news %}
