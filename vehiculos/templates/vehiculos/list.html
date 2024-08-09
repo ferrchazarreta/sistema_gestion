@@ -1,25 +1,37 @@
 {% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
-    <h2>Lista de Vehículos</h2>
+  <h2>Lista de Vehículos</h2>
+  <div class="d-flex">
+
+
     {% if user.is_staff %}
-        <a href="{% url 'vehiculo_create' %}" class="btn btn-primary mb-3">Agregar Auto</a>
-        <a href="{% url 'brand_list' %}" class="btn btn-primary mb-3">Agregar Marca</a>
-        <a href="{% url 'model_list' %}" class="btn btn-primary mb-3">Agregar Modelo</a>
-        <a href="{% url 'fuel_list' %}" class="btn btn-primary mb-3">Agregar Tipo de combustible</a>
-        <a href="{% url 'country_list' %}" class="btn btn-primary mb-3">Agregar Pais</a>
-        <a href="{% url 'transmission_list' %}" class="btn btn-primary mb-3">Agregar Transmisión</a>
-        <a href="{% url 'condition_list' %}" class="btn btn-primary mb-3">Agregar Condición</a>
-        <a href="{% url 'bodyWork_list' %}" class="btn btn-primary mb-3">Agregar Carrocería</a>
-        <a href="{% url 'gama_list' %}" class="btn btn-primary mb-3">Agregar Gama</a>
+    <div class="dropdown m-1">
+      <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
+        class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
+        aria-expanded="false">
+        Agregar
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a href="{% url 'vehiculo_create' %}" class="dropdown-item">Agregar Auto</a></li>
+        <li><a href="{% url 'brand_list' %}" class="dropdown-item">Agregar Marca</a></li>
+        <li><a href="{% url 'model_list' %}" class="dropdown-item">Agregar Modelo</a></li>
+        <li><a href="{% url 'fuel_list' %}" class="dropdown-item">Agregar Tipo de combustible</a></li>
+        <li><a href="{% url 'country_list' %}" class="dropdown-item">Agregar Pais</a></li>
+        <li><a href="{% url 'transmission_list' %}" class="dropdown-item">Agregar Transmisión</a></li>
+        <li><a href="{% url 'condition_list' %}" class="dropdown-item">Agregar Condición</a></li>
+        <li><a href="{% url 'bodyWork_list' %}" class="dropdown-item">Agregar Carrocería</a></li>
+        <li><a href="{% url 'gama_list' %}" class="dropdown-item">Agregar Gama</a></li>
+      </ul>
+    </div>
     {% endif %}
     <div class="dropdown m-1">
       <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
-        class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-        data-mdb-toggle="dropdown" aria-expanded="false">
+        class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
+        aria-expanded="false">
         Categorias
       </button>
-      <a href="{% url 'vehiculo_list' %}" class="btn btn-danger">Borrar Filtros</a>
+      <a href="{% url 'vehiculo_list' %}" class="btn btn-danger btn-sm">Borrar Filtros</a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for bodywork in bodyworks %}
         <li><a class="dropdown-item" href="{% url 'filter_bodywork' bodywork.id %}">{{bodywork.name}}</a></li>
@@ -34,36 +46,39 @@
         <li><a class="dropdown-item" href="{% url 'filter_gama' gama.id %}">{{gama.name}}</a></li>
         {% endfor %}
         {% for transmission in transmissions %}
-        <li><a class="dropdown-item" href="{% url 'filter_transmission' transmission.id %}">{{transmission.name}}</a></li>
+        <li><a class="dropdown-item" href="{% url 'filter_transmission' transmission.id %}">{{transmission.name}}</a>
+        </li>
         {% endfor %}
         {% for brand in brands %}
         <li><a class="dropdown-item" href="{% url 'filter_brand' brand.id %}">{{brand.name}}</a></li>
         {% endfor %}
       </ul>
     </div>
-    <div class="container d-flex justify-content-center flex-wrap">
-      {% for car in cars %}
-        <div class="card m-2 align-self-center" style="width: 18rem;">
-          <img src="{{car.image.url}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ car.model_car.name }} | {{ car.brand.name }}</h5>
-            <p class="card-text">Este vehiculo fue construido en {{car.country_production}} en el año {{car.year_production}}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
-            <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
-            <li class="list-group-item">Precio: ${{ car.price}}</li>
-            <li class="list-group-item">Cant. de Puertas: {{ car.door_quatity}}</li>
-          </ul>
-          <div class="card-body">
-            {% if user.is_staff %}
-            <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">Editar</a>
-            <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">Eliminar</a>
-            {% endif %}
-            <a href="{% url 'vehiculo_detail' car.id %}" class="btn btn-primary">Detalle</a>
-          </div>
-        </div>
-      {% endfor %}
+  </div>
+  <div class="container d-flex justify-content-center flex-wrap">
+    {% for car in cars %}
+    <div class="card m-2 align-self-center" style="width: 18rem;">
+      <img src="{{car.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ car.model_car.name }} | {{ car.brand.name }}</h5>
+        <p class="card-text">Este vehiculo fue construido en {{car.country_production}} en el año
+          {{car.year_production}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
+        <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
+        <li class="list-group-item">Precio: ${{ car.price}}</li>
+        <li class="list-group-item">Cant. de Puertas: {{ car.door_quatity}}</li>
+      </ul>
+      <div class="card-body">
+        {% if user.is_staff %}
+        <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">Editar</a>
+        <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">Eliminar</a>
+        {% endif %}
+        <a href="{% url 'vehiculo_detail' car.id %}" class="btn btn-primary">Detalle</a>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
