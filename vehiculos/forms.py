@@ -40,13 +40,13 @@ class CarForm(forms.ModelForm):
       'cilindrada': forms.NumberInput(attrs={'class': 'form-control'}),
       'fuel_type': forms.Select(attrs={'class': 'form-control'}),
       'country_production': forms.Select(attrs={'class': 'form-control'}),
-      'image': forms.FileInput(attrs={'class': 'form-control'}),
+      'image': forms.FileInput(attrs={'class': 'form-control','required':'required'}),
       'price': forms.NumberInput(attrs={'class': 'form-control'}),
       'transmission': forms.Select(attrs={'class': 'form-control'}),
       'gama': forms.Select(attrs={'class': 'form-control'}),
       'condition':forms.Select(attrs={'class': 'form-control'}),
       'bodyWork': forms.Select(attrs={'class': 'form-control'}),
-      'km': forms.NumberInput(attrs={'class': 'form-control'}),
+      'km': forms.NumberInput(attrs={'class': 'form-control','min':'1'}),
     }
 
 
