@@ -7,16 +7,16 @@ from vehiculos.repositories.gamaRepository import GamaRepository
 
 class GamaView(View):
   def get(self, request):
-    repo = GamaRepository()
-    gama = repo.get_all()
     if request.user.is_staff:
+      repo = GamaRepository()
+      gama = repo.get_all()
       return render(
-        request,
-        'gama/list.html',
-        {
-          'gamas': gama
-        }
-      )
+          request,
+          'gama/list.html',
+          {
+            'gamas': gama
+          }
+        )
     else:
       return redirect('index')
 

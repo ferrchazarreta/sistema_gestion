@@ -4,6 +4,7 @@
     <h2>Lista de Combustibles</h2>
     {% if user.is_staff %}
       <a href="{% url 'fuel_create' %}" class="btn btn-primary mb-3">Crear Combustible</a>
+      <a class="btn btn-secondary mb-3" href="{% url 'vehiculo_list' %}">Volver</a>
     {% endif %}
     <table class="table table-striped">
         <thead>

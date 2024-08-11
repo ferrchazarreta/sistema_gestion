@@ -373,7 +373,7 @@ class CarByFuel(View):
     fuels = fuelRepo.get_all()
     brands = brandRepo.get_all()
     fuel = fuelRepo.get_by_id(id=id)
-    vehiculo = carRepo.filter_by_fuel(fuel_type=fuel)
+    vehiculo = carRepo.filter_by_fuel(fuel=fuel)
     return render(
       request,
       'vehiculos/list.html',

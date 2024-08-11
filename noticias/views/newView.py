@@ -11,14 +11,17 @@ from noticias.repositories.categoryRepository import CategoryRepository
 
 class NewsView(View):
   def get(self, request):
-    repo = NewRepository()
-    noticias = repo.get_all()
+    newRepo = NewRepository()
+    categoryRepo = CategoryRepository()
+    categories = categoryRepo.get_all()
+    noticias = newRepo.get_all()
 
     return render(
       request,
       'noticias/list.html',
-      {
-        'news': noticias
+       {
+        'news':noticias,
+        'categories': categories,
       }
       )
 
@@ -135,3 +138,19 @@ class NewsUpdate(View):
       return redirect('noticias_list')
     else:
       return redirect('noticias_list')
+  
+class NewByCategory(View):
+  def get(self, request, id):
+    newRepo = NewRepository()
+    categoryRepo = CategoryRepository()
+    category = categoryRepo.get_by_id(id=id)
+    categories = categoryRepo.get_all()
+    noticia = newRepo.filter_by_category(category=category)
+    return render(
+      request,
+      'noticias/list.html',
+      {
+        'news':noticia,
+        'categories': categories,
+      }
+    )

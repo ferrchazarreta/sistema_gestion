@@ -21,7 +21,7 @@ class NewsForm(forms.ModelForm):
       'short_description': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Descripción'}),
       'long_description': forms.Textarea(attrs={'class': 'form-control','placeholder': 'Descrición'}),
       'category': forms.Select(attrs={'class': 'form-control'}),
-      'image': forms.FileInput(attrs={'class': 'form-control'}),
+      'image': forms.FileInput(attrs={'class': 'form-control','required':'required'}),
     }
 
 

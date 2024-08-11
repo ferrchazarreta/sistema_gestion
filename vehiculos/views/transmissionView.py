@@ -7,16 +7,16 @@ from vehiculos.repositories.transmissionRepository import TransmissionRepository
 
 class TransmissionView(View):
   def get(self, request):
-    repo = TransmissionRepository()
-    transmision = repo.get_all()
     if request.user.is_staff:
+      repo = TransmissionRepository()
+      transmision = repo.get_all()
       return render(
-        request,
-        'transmission/list.html',
-        {
-          'transmissions': transmision
-        }
-      )
+          request,
+          'transmission/list.html',
+          {
+            'transmissions': transmision
+          }
+        )
     else:
       return redirect('index')
 

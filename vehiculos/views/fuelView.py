@@ -7,16 +7,19 @@ from vehiculos.repositories.fuelRepository import FuelRepository
 
 class FuelView(View):
   def get(self, request):
-    repo = FuelRepository()
-    combustibles = repo.get_all()
+    if request.user.is_staff:
+      repo = FuelRepository()
+      combustibles = repo.get_all()
 
-    return render(
-      request,
-      'fuels/list.html',
-      {
-        'fuels': combustibles
-      }
-    )
+      return render(
+        request,
+        'fuels/list.html',
+        {
+          'fuels': combustibles
+        }
+      )
+    else:
+      return redirect('index')
 
 class FuelCreate(View):
     def get(self, request):

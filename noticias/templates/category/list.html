@@ -4,6 +4,7 @@
     <h2>Lista de Categorias</h2>
     {% if user.is_staff %}
       <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Crear Categoria</a>
+      <a class="btn btn-secondary mb-3" href="{% url 'noticias_list' %}">Volver</a>
     {% endif %}
     <table class="table table-striped">
         <thead>

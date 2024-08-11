@@ -1,3 +1,28 @@
 {% extends "home/base.html" %}
 {% block content %}
+
+<div class="container mt-3">
+    <h2 class=" ms-5">{{car.model_car}}</h2>
+    <span class="badge text-bg-secondary ms-5">{{car.brand}}</span>
+    <div class="container d-flex flex-column justify-content-center align-items-center flex-wrap">
+      <img src="{{car.image.url}}" alt="" width="30%">
+    </div>
+    <div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
+            <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
+            <li class="list-group-item">Precio: ${{ car.price}}</li>
+            <li class="list-group-item">Pais: {{ car.country_production}}</li> 
+            <li class="list-group-item">Cant. de Puertas: {{ car.door_quatity}}</li> 
+            <li class="list-group-item">Gama: {{ car.gama}}</li>
+            <li class="list-group-item">Transmision: {{ car.transmission}}</li>
+            <li class="list-group-item">Carroceria: {{ car.bodyWork}}</li> 
+            <li class="list-group-item">Condicion: {{ car.condition}}</li> 
+            <li class="list-group-item">Kilometros: {{ car.km}}</li>
+
+        </ul> 
+    </div>
+    <a class="btn btn-secondary my-3" href="{% url 'vehiculo_list' %}">Volver a la Lista</a>
+</div>
+
 {% endblock %}

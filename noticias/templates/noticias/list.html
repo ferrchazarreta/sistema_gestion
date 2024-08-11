@@ -2,10 +2,23 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Mira las ultimas novedades del mercado</h2>
-    {% if user.is_staff %}
-      <a href="{% url 'noticias_create' %}" class="btn btn-primary mb-3">Crear Noticia</a>
-      <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Crear Nuevas Categorias</a>
+    <div class="dropdown mb-5">
+      <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
+        class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
+        aria-expanded="false">
+        Categorias
+      </button>
+      {% if user.is_staff %}
+      <a href="{% url 'noticias_create' %}" class="btn btn-primary btn-sm">Crear Noticia</a>
+      <a href="{% url 'category_list' %}" class="btn btn-primary btn-sm">Crear Nuevas Categorias</a>
     {% endif %}
+      <a href="{% url 'noticias_list' %}" class="btn btn-danger btn-sm">Borrar Filtros</a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for category in categories %}
+        <li><a href="{% url 'filter_category' category.id %}" class="dropdown-item">{{category.name}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
     <div class="container d-flex justify-content-left flex-wrap">
       {% for new in news %}
       <div class="row gx-5">

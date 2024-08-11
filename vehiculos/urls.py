@@ -22,7 +22,8 @@ from vehiculos.views.carView import (
   CarDelete,
   CarCreate,
   CarDetail,
-#Filtros
+  
+  #Filtros
   CarByBrand,
   CarByBodyWork,
   CarByCondition,
@@ -134,5 +135,12 @@ urlpatterns = [
   path(route='bodywork/<int:id>/delete/', view=BodyWorkDelete.as_view(), name='bodyWork_delete'),
   path(route='bodywork/<int:id>/update/', view=BodyWorkUpdate.as_view(), name='bodyWork_update'),
   
+  path(route='filter/brand/<int:id>/', view=CarByBrand.as_view(), name='filter_brand'),
+  path(route='filter/bodywork/<int:id>/', view=CarByBodyWork.as_view(), name='filter_bodywork'),
   path(route='filter/condition/<int:id>/', view=CarByCondition.as_view(), name='filter_condition'),
+  path(route='filter/fuel/<int:id>/', view=CarByFuel.as_view(), name='filter_fuel'),
+  path(route='filter/gama/<int:id>/', view=CarByGama.as_view(), name='filter_gama'),
+  path(route='filter/transmission/<int:id>/', view=CarByTransmission.as_view(), name='filter_transmission'),
+ 
+  
 ] 

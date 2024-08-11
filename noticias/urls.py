@@ -9,6 +9,7 @@ from noticias.views.newView import (
   NewsCreate,
   NewsUpdate,
   NewsDetail,
+  NewByCategory
 )
 
 from noticias.views.categoryView import (
@@ -29,5 +30,7 @@ urlpatterns = [
   path(route='<int:id>/delete/', view=NewsDelete.as_view(), name='noticias_delete'),
   path(route='<int:id>/update/', view=NewsUpdate.as_view(), name='noticias_update'),
   path(route='<int:id>/datail', view=NewsDetail.as_view(), name='noticias_detail'),
+#Filtro
+  path(route='category/<int:id>', view=NewByCategory.as_view(), name='filter_category'),
 
 ] 
