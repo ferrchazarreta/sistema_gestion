@@ -18,20 +18,5 @@ class Usuario_Repository:
         if email_exists:
             raise ValidationError("El email ya se encuetra registrado")
         return email
-    
-    def update(self,
-        usuario: User,
-        username:str, 
-        first_name:str,
-        last_name:str, 
-        email:str, 
-        password: str
-        ) -> User.objects:
-        usuario.username = username
-        usuario.first_name = first_name
-        usuario.last_name = last_name
-        usuario.email = email
-        usuario.set_password(password)
-        usuario.save()
         
         

@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
         
 
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control custom-class','value':'asdasdsa'}),
+            'username': forms.TextInput(attrs={'class': 'form-control custom-class',}),
             'email': forms.EmailInput(attrs={'class': 'form-control custom-class'}),
             'password1': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
@@ -46,6 +46,54 @@ class UserRegisterForm(UserCreationForm):
         if commit:
             user.save()
         return user
+    
+class UserUpdateForm(forms.ModelForm):
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class','value':'password1'}),
+        required=False,
+        help_text='Ingrese una nueva contraseña si desea cambiarla'
+        )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class','value':'password2'}),
+        required=False,
+        help_text='Confirme la nueva contraseña'
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control custom-class', 'value':'username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control custom-class', 'value':'email'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control custom-class', 'value':'first_name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control custom-class', 'value':'last_name'}),
+        }
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        email_exists = User.objects.filter(email=email).exists()
+        if email_exists:
+            raise ValidationError("El email ya se encuetra registrado")
+        return email
+    
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+
+        if password1 and password2 and password1 != password2:
+            raise ValidationError("Las contraseñas no coinciden")
+        return password2
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data.get('email')
+        if self.cleaned_data.get('password1'):
+            user.set_password(self.cleaned_data.get('password1'))
+        if commit:
+            user.save()
+        return user
+
+    
     
 class ClienteForm(forms.ModelForm):
     class Meta:

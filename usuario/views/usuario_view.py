@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 
 from usuario.repositories.usuario_repository import Usuario_Repository
-from usuario.forms import UserRegisterForm
+from usuario.forms import UserRegisterForm, UserUpdateForm
 
 repository = Usuario_Repository()
 
@@ -66,29 +66,29 @@ class Usuario_Update(View):
     def get(self, request, id):
         if request.user.is_staff:
             usuario = repository.get_by_id(id=id)
-            return render(request, 'usuario/update.html',
-                          {'usuario': usuario}
-                          )
+            user_form = UserUpdateForm(instance=usuario)
+            return render(
+                request, 
+                'usuario/update.html', 
+                {'user_form': user_form}
+            )
         else:
             return redirect('index')
     
     def post(self,request,id):
         if request.user.is_staff:
             usuario = repository.get_by_id(id=id)
-            username = request.POST.get('username')
-            email = request.POST.get('email')
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
-            password = request.POST.get('password')
-            repository.update(
-                usuario=usuario,
-                username=username,
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-                password=password,
+            user_form = UserUpdateForm(request.POST, instance=usuario)
+            if user_form.is_valid():
+                user_form.save()
+                return redirect('usuario_detail', id=id)
+            else:
+                return render(
+                request, 
+                'usuario/update.html', 
+                {'user_form': user_form},
+                print('falla')
             )
-            return redirect('usuario_detail', id=id)
         else:
             return redirect('index')
-            
+        
