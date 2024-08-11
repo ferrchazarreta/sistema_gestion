@@ -83,12 +83,8 @@ class Usuario_Update(View):
                 user_form.save()
                 return redirect('usuario_detail', id=id)
             else:
-                return render(
-                request, 
-                'usuario/update.html', 
-                {'user_form': user_form},
-                print('falla')
-            )
+                print(user_form.errors)  # Imprime los errores en la consola para revisión
+                return render(request, 'usuario/update.html', {'user_form': user_form})
         else:
             return redirect('index')
         

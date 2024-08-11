@@ -49,12 +49,12 @@ class UserRegisterForm(UserCreationForm):
     
 class UserUpdateForm(forms.ModelForm):
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class','value':'password1'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
         required=False,
         help_text='Ingrese una nueva contraseña si desea cambiarla'
         )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class','value':'password2'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control custom-class'}),
         required=False,
         help_text='Confirme la nueva contraseña'
     )
@@ -71,8 +71,10 @@ class UserUpdateForm(forms.ModelForm):
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        email_exists = User.objects.filter(email=email).exists()
-        if email_exists:
+        usuario_id = self.instance.id
+        
+        # Verificar si el correo ya existe, excluyendo el usuario actual
+        if User.objects.filter(email=email).exclude(id=usuario_id).exists():
             raise ValidationError("El email ya se encuetra registrado")
         return email
     
