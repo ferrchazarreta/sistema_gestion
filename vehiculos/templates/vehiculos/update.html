@@ -6,7 +6,7 @@
         {% csrf_token %}
         <div class="form-group mt-2">
           <label>Marca</label>
-          <select name="brand" class="form-control">
+          <select name="brand" class="form-control" required>
               <option value="">Selecciona una marca</option>
               {% for brand in brands %}
                   <option value="{{ brand.id }}" {% if brand.id == car.brand.id  %} selected {% endif %}>
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group mt-2">
           <label>Modelo</label>
-          <select name="model_car" class="form-control">
+          <select name="model_car" class="form-control" required>
               <option value="">Selecciona un Modelo</option>
               {% for model in models %}
                   <option value="{{ model.id }}" {% if model.id == car.model_car.id  %} selected {% endif %}>
@@ -28,19 +28,19 @@
         </div>
         <div class="form-group mt-2">
           <label>Cilindradas</label>
-          <input type="number" step="0.01" name="cilindrada" class="form-control" value="{{ car.cilindrada }}" required>
+          <input type="number" step="100" min="1000" name="cilindrada" class="form-control" value="{{ car.cilindrada }}" required>
         </div>
         <div class="form-group mt-2">
           <label>Año de Frabricacion</label>
-          <input type="number" step="0.01" name="year_production" class="form-control" value="{{ car.year_production }}" required>
+          <input type="number" step="1" min="1886" name="year_production" class="form-control" value="{{ car.year_production }}" required>
         </div>
         <div class="form-group mt-2">
           <label>Cantidad de puertas</label>
-          <input type="number" step="0.01" name="door_quatity" class="form-control" value="{{ car.door_quatity }}" required>
+          <input type="number" step="1" min="2" name="door_quatity" class="form-control" value="{{ car.door_quatity }}" required>
         </div>
         <div class="form-group mt-2">
           <label>Combustible</label>
-          <select name="fuel_type" class="form-control">
+          <select name="fuel_type" class="form-control" required>
               <option value="">Selecciona el combustible</option>
               {% for fuel in fuels %}
                   <option value="{{ fuel.id }}" {% if fuel.id == car.fuel_type.id  %} selected {% endif %}>
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group mt-2">
           <label>Pais</label>
-          <select name="country" class="form-control">
+          <select name="country" class="form-control" required>
               <option value="">Selecciona el pais</option>
               {% for country in countries %}
                   <option value="{{ country.id }}" {% if country.id == car.country_production.id  %} selected {% endif %}>
@@ -62,11 +62,11 @@
         </div>
         <div class="form-group mt-2">
           <label>Precio</label>
-          <input type="number" step="0.01" name="price" class="form-control" value="{{ car.price }}">
+          <input type="number" step="100" min="1000"  name="price" class="form-control" required value="{{ car.price }}">
         </div>
         <div class="form-group mt-2">
           <label>Transmision</label>
-          <select name="transmission" class="form-control">
+          <select name="transmission" class="form-control" required>
               <option value="">Selecciona la Transmision</option>
               {% for transmission in transmissions %}
                   <option value="{{ transmission.id }}" {% if transmission.id == car.transmission.id  %} selected {% endif %}>
@@ -77,7 +77,7 @@
         </div>
         <div class="form-group mt-2">
           <label>Carroceria</label>
-          <select name="bodyWork" class="form-control">
+          <select name="bodyWork" class="form-control" required>
               <option value="">Selecciona la Carroceria</option>
               {% for bodyWork in bodyWorks %}
                   <option value="{{ bodyWork.id }}" {% if bodyWork.id == car.bodyWork.id  %} selected {% endif %}>
@@ -88,7 +88,7 @@
         </div>
         <div class="form-group mt-2">
           <label>Gama</label>
-          <select name="gama" class="form-control">
+          <select name="gama" class="form-control" required>
               <option value="">Selecciona la Gama</option>
               {% for gama in gamas %}
                   <option value="{{ gama.id }}" {% if gama.id == car.gama.id  %} selected {% endif %}>
@@ -99,7 +99,7 @@
         </div>
         <div class="form-group mt-2">
           <label>Condicion</label>
-          <select name="condition" class="form-control">
+          <select name="condition" class="form-control" required>
               <option value="">Selecciona la Transmision del vehiculo</option>
               {% for condition in conditions %}
                   <option value="{{ condition.id }}" {% if condition.id == car.condition.id  %} selected {% endif %}>
@@ -109,8 +109,12 @@
           </select>
         </div>
         <div class="form-group mt-2">
+          <label>Kilometros</label>
+          <input type="number" step="100" min="1000"  name="km" class="form-control" required value="{{ car.km }}">
+        </div>
+        <div class="form-group mt-2">
           <label>Imagen</label>
-          <input type="file" name="image" class="form-control" >
+          <input type="file" name="image" class="form-control" required >
         </div>
         <div class="mt-2 mb-3">
           <button type="submit" class="btn btn-primary">Actualizar</button>

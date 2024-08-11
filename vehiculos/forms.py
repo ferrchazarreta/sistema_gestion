@@ -33,20 +33,20 @@ class CarForm(forms.ModelForm):
     ]
       
     widgets = {
-      'brand': forms.Select(attrs={'class': 'form-control'}),
-      'model_car': forms.Select(attrs={'class': 'form-control'}),
-      'year_production': forms.NumberInput(attrs={'class': 'form-control'}),
-      'door_quatity': forms.NumberInput(attrs={'class': 'form-control'}),
-      'cilindrada': forms.NumberInput(attrs={'class': 'form-control'}),
-      'fuel_type': forms.Select(attrs={'class': 'form-control'}),
-      'country_production': forms.Select(attrs={'class': 'form-control'}),
+      'brand': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'model_car': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'year_production': forms.NumberInput(attrs={'class': 'form-control','required':'required','min':'1886'}),
+      'door_quatity': forms.NumberInput(attrs={'class': 'form-control','required':'required','min':'2'}),
+      'cilindrada': forms.NumberInput(attrs={'class': 'form-control','required':'required','min':'1000'}),
+      'fuel_type': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'country_production': forms.Select(attrs={'class': 'form-control','required':'required'}),
       'image': forms.FileInput(attrs={'class': 'form-control','required':'required'}),
-      'price': forms.NumberInput(attrs={'class': 'form-control'}),
-      'transmission': forms.Select(attrs={'class': 'form-control'}),
-      'gama': forms.Select(attrs={'class': 'form-control'}),
-      'condition':forms.Select(attrs={'class': 'form-control'}),
-      'bodyWork': forms.Select(attrs={'class': 'form-control'}),
-      'km': forms.NumberInput(attrs={'class': 'form-control','min':'1'}),
+      'price': forms.NumberInput(attrs={'class': 'form-control','required':'required','min':'1000'}),
+      'transmission': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'gama': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'condition':forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'bodyWork': forms.Select(attrs={'class': 'form-control','required':'required'}),
+      'km': forms.NumberInput(attrs={'class': 'form-control','min':'1','required':'required'}),
     }
 
 
