@@ -4,63 +4,63 @@
     <h2>Crear Vehiculo</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Marca</label>
           {{form.brand}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Modelo</label>
           {{form.model_car}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Cilindradas</label>
           {{form.cilindrada}}  
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Año de Frabricacion</label>
           {{form.year_production}}  
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Cantidad de puertas</label>
           {{form.door_quatity}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Combustible</label>
           {{form.fuel_type}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Pais</label>
           {{form.country_production}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Precio</label>
           {{form.price}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Transmision</label>
           {{form.transmission}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Gama</label>
           {{form.gama}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Condicion</label>
           {{form.condition}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Carroceria</label>
           {{form.bodyWork}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Kilometros</label>
           {{form.km}}
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
           <label>Imagen</label>
           {{form.image}}
         </div>
-        <div class="mt-2">
+        <div class="my-4">
           <button type="submit" class="btn btn-primary">Crear</button>
           <a class="btn btn-secondary" href="{% url 'vehiculo_list' %}">Volver a la Lista</a>
       </div>

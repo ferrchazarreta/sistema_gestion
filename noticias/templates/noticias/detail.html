@@ -4,11 +4,11 @@
 <div class="container mt-3">
   <h2 class=" ms-5">{{new.title}}</h2>
   <span class="badge text-bg-secondary ms-5">{{new.category}}</span>
-  <div class="container d-flex justify-content-center flex-wrap">
-    <img src="{{new.image.url}}" alt="">
+  <div class="container d-flex flex-column justify-content-center align-items-center flex-wrap">
+    <img src="{{new.image.url}}" alt="" width="30%">
     <p class="p-5">{{new.long_description}}</p>
-    <p>{{new.created_at}}</p>
   </div>
+  <p>{{new.created_at}}</p>
   <a class="btn btn-secondary mt-3" href="{% url 'noticias_list' %}">Volver a la Lista</a>
 </div>
 {% endblock %}
