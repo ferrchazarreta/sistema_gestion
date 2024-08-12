@@ -4,10 +4,10 @@ Desarrollar un sistema web para la gestión de una concesionaria de autos utiliz
 ## Especificaciones del Sistema
 	• Modelos de Base de Datos
  	• Autenticación de Usuarios
-  • Roles de Usuarios
+  	• Roles de Usuarios
 	• Usuario Staff
-  • Usuario No Staff
-  • Carga de Imágenes
+  	• Usuario No Staff
+  	• Carga de Imágenes
 	• Restricciones de Acceso
 
  ## Requisitos Técnicos
@@ -23,13 +23,13 @@ Desarrollar un sistema web para la gestión de una concesionaria de autos utiliz
 1. Clonar este repositorio de manera local
 
 ```bash
-git clone 
+git clone git@github.com:ferrchazarreta/sistema_gestion.git
 ```
 
 2. Situarce en el directorio del proyecto:
 
 ```bash
-cd tuProyecto
+cd sistema_gestion
 ```
 
 ## Ejecución
@@ -61,6 +61,10 @@ python manage.py makemigration
 ```
 ```bash
 python manage.py migrate
+```
+Correr el proyecto
+```bash
+python manage.py runserver
 ```
 
 
