@@ -212,7 +212,3 @@ A continuación, se detallan los endpoints disponibles para cada entidad en el s
 - Chazarreta Fernando
 - Gurrea Mateo
 - Lombardi Simon
-
-```
-
-```
