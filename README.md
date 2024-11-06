@@ -65,22 +65,44 @@ pip install -r requirements.txt
 Realizar las migraciones correspondientes
 
 ```bash
-manage.py makemigration
+python manage.py makemigration
 ```
 
 ```bash
-manage.py migrate
+python manage.py migrate
+```
+Correr las traducciones
+```bash
+python manage.py makemessages -l en
+```
+
+```bash
+python manage.py compilemessages
 ```
 
 Correr el proyecto
 
 ```bash
-manage.py runserver
+python manage.py runserver
 ```
 
 ## API Endpoints
 
 A continuación, se detallan los endpoints disponibles para cada entidad en el sistema:
+
+## Importante:
+- Para poder acceder a los endpoints desde una aplicacion externa como postman o thunderclient es necesario pasar un **Token** por el header de la siguiente manera
+    - Primero debemos hacer un **POST** a la ruta `http://127.0.0.1:8000/api_v1/login_api/`
+        - Eviaremos por **Body** "usrname" y "password" 
+  ### Ejemplo:
+ ![image](https://github.com/user-attachments/assets/3ee4ee77-cbc8-4d2f-a3d4-a2a8be4089f8)
+ 
+- Luego debemos usar ese **Token** para mandarselo a las demas rutas por header como **Authorization**
+  ### Ejemplo:
+ ![image](https://github.com/user-attachments/assets/6ba6ac23-8e40-48db-9873-8bfe4cd7c4dd)
+
+
+
 
 ### Countries
 
