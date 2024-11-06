@@ -45,14 +45,21 @@ py -3 -m venv env
 
 Activar el entorno virtual
 
+Para Linux
+
 ```bash
 source/env/Scripts/activate
+```
+
+Para Windows
+```bash
+env/Scripts/activate
 ```
 
 Instalar los requerimientos
 
 ```bash
-install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Realizar las migraciones correspondientes
