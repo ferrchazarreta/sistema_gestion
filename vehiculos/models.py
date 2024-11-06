@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Country(models.Model):
   name = models.CharField(max_length=200)
-  
+
   def __str__(self):
     return  self.name
 
@@ -15,34 +15,34 @@ class Modelo(models.Model):
 
 class Brand(models.Model):
   name = models.CharField(max_length=200)
-  
+
   def __str__(self):
     return  self.name
 
 class Fuel(models.Model):
   name = models.CharField(max_length=200)
-  
+
   def __str__(self):
     return  self.name
-  
+
 class Transmission(models.Model):
   name = models.CharField(max_length=200)
 
   def __str__(self):
     return  self.name
-  
+
 class Gama(models.Model):
   name = models.CharField(max_length=200)
 
   def __str__(self):
     return  self.name
-  
+
 class Condition(models.Model):
   name = models.CharField(max_length=200)
 
   def __str__(self):
     return  self.name
-  
+
 class BodyWork(models.Model):
   name = models.CharField(max_length=200)
 
@@ -74,7 +74,7 @@ class Car(models.Model):
   fuel_type = models.ForeignKey(
     Fuel,
     on_delete=models.CASCADE,
-    related_name='products',
+    related_name='fuels',
   )
 
   country_production = models.ForeignKey(
@@ -82,7 +82,7 @@ class Car(models.Model):
     on_delete=models.CASCADE,
     related_name='countries',
   )
-  
+
   image = models.ImageField(upload_to='vehiculos_images/', null=True, blank=True)
 
   price = models.IntegerField()
@@ -115,10 +115,10 @@ class Car(models.Model):
 
   def __str__(self):
     return  self.brand.name
-  
+
   def info_car(self):
     return f"{self.brand} {self.model_car}, Año {self.year_production}"
-  
+
 #TESTIMONIOS
 class VehiculoReview(models.Model):
   vehiculo = models.ForeignKey(

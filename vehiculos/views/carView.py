@@ -48,7 +48,7 @@ class CarCreate(View):
   def get(self, request):
     if request.user.is_staff:
       form = CarForm()
-      
+
       return render(
         request,
         'vehiculos/create.html',
@@ -58,7 +58,7 @@ class CarCreate(View):
       )
     else:
       return redirect('vehiculo_list')
-    
+
   def post(self, request):
     if request.user.is_staff:
       carRepo = CarRepository()
@@ -83,7 +83,7 @@ class CarCreate(View):
         return render(request, 'vehiculo_list', {
       })
 
-      
+
 
       brandId = data.get('brand')
       brand = brandsRepo.get_by_id(id=brandId)
@@ -92,7 +92,7 @@ class CarCreate(View):
       countryId = data.get('country_production')
       country = countryRepo.get_by_id(id=countryId)
       modelId = data.get('model_car')
-      model = modelRepo.get_by_id(id=modelId)  
+      model = modelRepo.get_by_id(id=modelId)
       transmissionId = data.get('transmission')
       transmission = transmissionRepo.get_by_id(id=transmissionId)
       conditionId = data.get('condition')
@@ -115,9 +115,9 @@ class CarCreate(View):
         transmission=transmission,
         condition=condition,
         gama=gama,
-        body_work=bodyWork,
+        bodyWork=bodyWork,
       )
-      
+
       return redirect('vehiculo_list')
     else:
       return redirect('vehiculo_list')
@@ -184,7 +184,7 @@ class CarUpdate(View):
       )
     else:
       return redirect('vehiculo_list')
-  
+
   def post(self, request, id):
     if request.user.is_staff:
       carRepo = CarRepository()
@@ -207,7 +207,7 @@ class CarUpdate(View):
       bodyWork = bodyWorkRepository.get_by_id(request.POST.get('bodyWork'))
       gama = gamaRepository.get_by_id(request.POST.get('gama'))
       data = request.POST
-      
+
       # Verificar si se ha cargado una nueva imagen
       if 'image' in request.FILES:
         car.image = request.FILES['image']
@@ -232,7 +232,7 @@ class CarUpdate(View):
       return redirect('vehiculo_list')
     else:
       return redirect('vehiculos_list')
-    
+
 class CarByBrand(View):
   def get(self, request, id):
     carRepo = CarRepository()
@@ -356,7 +356,7 @@ class CarByBodyWork(View):
         'brands': brands,
       }
     )
-  
+
 class CarByFuel(View):
   def get(self, request, id):
     carRepo = CarRepository()

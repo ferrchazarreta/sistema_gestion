@@ -9,5 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('vehiculos/', include('vehiculos.urls')),
     path('usuarios/', include('usuario.urls')),
-    path('noticias/',include('noticias.urls'))
+    path('noticias/',include('noticias.urls')),
+    path('api_v1/',include('api_v1.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

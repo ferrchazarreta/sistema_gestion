@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'vehiculos',
     'usuario',
     'noticias',
+    'api_v1',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
