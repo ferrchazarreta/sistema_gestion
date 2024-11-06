@@ -1,18 +1,20 @@
 {% extends "home/base.html" %}
 {% block content %}
+{% load i18n %}
+
 <div class="container mt-3">
-    <h2>Mira las ultimas novedades del mercado</h2>
+    <h2>{% trans "Mira las últimas novedades del mercado" %}</h2>
     <div class="dropdown mb-5">
       <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
         class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
         aria-expanded="false">
-        Categorias
+        {% trans "Categorias" %}
       </button>
       {% if user.is_staff %}
-      <a href="{% url 'noticias_create' %}" class="btn btn-primary btn-sm">Crear Noticia</a>
-      <a href="{% url 'category_list' %}" class="btn btn-primary btn-sm">Crear Nuevas Categorias</a>
+      <a href="{% url 'noticias_create' %}" class="btn btn-primary btn-sm">{% trans "Crear Noticia" %}</a>
+      <a href="{% url 'category_list' %}" class="btn btn-primary btn-sm">{% trans "Crear Nuevas Categorias" %}</a>
     {% endif %}
-      <a href="{% url 'noticias_list' %}" class="btn btn-danger btn-sm">Borrar Filtros</a>
+      <a href="{% url 'noticias_list' %}" class="btn btn-danger btn-sm">{% trans "Borrar Filtros" %}</a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for category in categories %}
         <li><a href="{% url 'filter_category' category.id %}" class="dropdown-item">{{category.name}}</a></li>
@@ -35,10 +37,10 @@
           <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">{{new.category}}</span>
           <h4><strong>{{new.title}}</strong></h4>
           <p class="text-muted">{{new.short_description}}</p>
-          <a href="{% url 'noticias_detail' new.id %}" class="btn btn-primary">Ver Mas</a>
+          <a href="{% url 'noticias_detail' new.id %}" class="btn btn-primary">{% trans "Ver Más" %}</a>
           {% if user.is_staff %}
-            <a href="{% url 'noticias_update' new.id %}" class="btn btn-success">Editar</a>
-            <a href="{% url 'noticias_delete' new.id %}" class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'noticias_update' new.id %}" class="btn btn-success">{% trans "Editar" %}</a>
+            <a href="{% url 'noticias_delete' new.id %}" class="btn btn-danger">{% trans "Eliminar" %}</a>
           {% endif %}
         </div>
       </div>

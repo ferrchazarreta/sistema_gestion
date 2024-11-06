@@ -1,5 +1,7 @@
 {% extends "home/base.html" %}
 {% block content %}
+{% load i18n %}
+
 
 <div class="container mt-3">
   <h2 class=" ms-5">{{new.title}}</h2>
@@ -9,6 +11,6 @@
     <p class="p-5">{{new.long_description}}</p>
   </div>
   <p>{{new.created_at}}</p>
-  <a class="btn btn-secondary mt-3" href="{% url 'noticias_list' %}">Volver a la Lista</a>
+  <a class="btn btn-secondary mt-3" href="{% url 'noticias_list' %}">{% trans "Volver a la lista" %}</a>
 </div>
 {% endblock %}

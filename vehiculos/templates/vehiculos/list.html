@@ -1,7 +1,9 @@
 {% extends "home/base.html" %}
 {% block content %}
+{% load i18n %}
+
 <div class="container mt-3">
-  <h2>Lista de Vehículos</h2>
+  <h2>{% trans "Lista de Vehículos" %}</h2>
   <div class="d-flex">
 
 
@@ -10,18 +12,18 @@
       <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
         class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
         aria-expanded="false">
-        Agregar
+        {% trans "Agregar" %}
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a href="{% url 'vehiculo_create' %}" class="dropdown-item">Agregar Auto</a></li>
-        <li><a href="{% url 'brand_list' %}" class="dropdown-item">Agregar Marca</a></li>
-        <li><a href="{% url 'model_list' %}" class="dropdown-item">Agregar Modelo</a></li>
-        <li><a href="{% url 'fuel_list' %}" class="dropdown-item">Agregar Tipo de combustible</a></li>
-        <li><a href="{% url 'country_list' %}" class="dropdown-item">Agregar Pais</a></li>
-        <li><a href="{% url 'transmission_list' %}" class="dropdown-item">Agregar Transmisión</a></li>
-        <li><a href="{% url 'condition_list' %}" class="dropdown-item">Agregar Condición</a></li>
-        <li><a href="{% url 'bodyWork_list' %}" class="dropdown-item">Agregar Carrocería</a></li>
-        <li><a href="{% url 'gama_list' %}" class="dropdown-item">Agregar Gama</a></li>
+        <li><a href="{% url 'vehiculo_create' %}" class="dropdown-item">{% trans "Agregar Auto" %}</a></li>
+        <li><a href="{% url 'brand_list' %}" class="dropdown-item">{% trans "Agregar Marca" %}</a></li>
+        <li><a href="{% url 'model_list' %}" class="dropdown-item">{% trans "Agregar Modelo" %}</a></li>
+        <li><a href="{% url 'fuel_list' %}" class="dropdown-item">{% trans "Agregar Tipo de Combustible" %}</a></li>
+        <li><a href="{% url 'country_list' %}" class="dropdown-item">{% trans "Agregar Pais" %}</a></li>
+        <li><a href="{% url 'transmission_list' %}" class="dropdown-item">{% trans "Agregar Transmisión" %}</a></li>
+        <li><a href="{% url 'condition_list' %}" class="dropdown-item">{% trans "Agregar Condición" %}</a></li>
+        <li><a href="{% url 'bodyWork_list' %}" class="dropdown-item">{% trans "Agregar Carroceria" %}</a></li>
+        <li><a href="{% url 'gama_list' %}" class="dropdown-item">{% trans "Agregar Gama" %}</a></li>
       </ul>
     </div>
     {% endif %}
@@ -29,9 +31,9 @@
       <button data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
         class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
         aria-expanded="false">
-        Categorias
+        {% trans "Categorias" %}
       </button>
-      <a href="{% url 'vehiculo_list' %}" class="btn btn-danger btn-sm">Borrar Filtros</a>
+      <a href="{% url 'vehiculo_list' %}" class="btn btn-danger btn-sm">{% trans "Borrar Filtros" %}</a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for bodywork in bodyworks %}
         <li><a class="dropdown-item" href="{% url 'filter_bodywork' bodywork.id %}">{{bodywork.name}}</a></li>
@@ -72,10 +74,10 @@
       </ul>
       <div class="card-body d-flex justify-content-around align-items-center p-1">
         {% if user.is_staff %}
-        <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">Editar</a>
-        <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">Eliminar</a>
+        <a href="{% url 'vehiculo_update' car.id %}" class="btn btn-success">{% trans "Editar" %}</a>
+        <a href="{% url 'vehiculo_delete' car.id %}" class="btn btn-danger">{% trans "Eliminar" %}</a>
         {% endif %}
-        <a href="{% url 'vehiculo_detail' car.id %}" class="btn btn-primary">Detalle</a>
+        <a href="{% url 'vehiculo_detail' car.id %}" class="btn btn-primary">{% trans "Detalle" %}</a>
       </div>
     </div>
     {% endfor %}
