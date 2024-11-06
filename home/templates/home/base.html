@@ -1,8 +1,9 @@
+{% load i18n %}
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Sistema de Gestion de Vehiculos</title>
+    <title>{% trans "Sistema de Gestion de Vehiculos" %}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -23,7 +24,7 @@
         <nav id="navbar" class="navbar navbar-expand-lg bg-navbar px-4" data-bs-theme="light">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{% url 'index' %}">
-                    Sistema de Gestión
+                    {% trans "Sistema de Gestión" %}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-lg-0">
                         <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="{% url 'vehiculo_list' %}">Vehículos</a>
+                            <a class="nav-link fw-bold" href="{% url 'vehiculo_list' %}">{% trans "Vehículos" %}</a>
                         </li>
                         <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="{% url 'noticias_list' %}">Noticias</a>
+                            <a class="nav-link fw-bold" href="{% url 'noticias_list' %}">{% trans "Noticias" %}</a>
                         </li>
                         <li class="nav-item m-1" href="">
-                            <a class="nav-link fw-bold" href="{% url 'review_list' %}">Testimonios</a>
+                            <a class="nav-link fw-bold" href="{% url 'review_list' %}">{% trans "Testimonios" %}</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item m-1 fw-bold pt-2">
@@ -46,10 +47,10 @@
                         </li>
                         {% if user.is_staff %}
                         <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="{% url 'cliente_list' %}">Clientes</a>
+                            <a class="nav-link fw-bold" href="{% url 'cliente_list' %}">{% trans "Clientes" %}</a>
                         </li>
                         <li class="nav-item m-1">
-                            <a class="nav-link fw-bold" href="{% url 'usuario_list' %}">Usuarios</a>
+                            <a class="nav-link fw-bold" href="{% url 'usuario_list' %}">{% trans "Usuarios" %}</a>
                         </li>
                         {% endif %}
                         {% endif %}
@@ -64,18 +65,18 @@
                                         <path fill-rule="evenodd"
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                     </svg>
-                                    ¡Hola, {{ user_info.name }}!
+                                    ¡{% trans "Hola" %}, {{ user_info.name }}!
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item fw-bold" href="{% url 'logout' %}">Salir</a>
+                                        <a class="dropdown-item fw-bold" href="{% url 'logout' %}">{% trans "Salir" %}</a>
                                     </li>
 
                                 </ul>
                             </div>
                         </li>
                         {% else %}
-                        <a class="btn btn-primary m-2" href="{% url 'login' %}">Ingresar</a>
+                        <a class="btn btn-primary m-2" href="{% url 'login' %}">{% trans "Ingresar" %}</a>
                         {% endif %}
                     </ul>
                 </div>
@@ -92,7 +93,7 @@
             {% if notification %}
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <strong class="me-auto">Sistema de Gestion</strong>
+                    <strong class="me-auto">{% trans "Sistema de Gestion" %}</strong>
                     <small>{{ notification.created_at|date:"H:i" }}</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>

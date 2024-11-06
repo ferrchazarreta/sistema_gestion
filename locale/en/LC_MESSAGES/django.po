@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-06 02:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: home/templates/home/base.html:6
+#, fuzzy
+#| msgid "Sistema de Gestión"
+msgid "Sistema de Gestion de Vehiculos"
+msgstr "Vehicle Management System"
+
+#: home/templates/home/base.html:27
+msgid "Sistema de Gestión"
+msgstr "Management System"
+
+#: home/templates/home/base.html:36
+msgid "Vehículos"
+msgstr "Cars"
+
+#: home/templates/home/base.html:39
+msgid "Noticias"
+msgstr "News"
+
+#: home/templates/home/base.html:42
+msgid "Testimonios"
+msgstr "Testimonials"
+
+#: home/templates/home/base.html:50
+msgid "Clientes"
+msgstr "Clients"
+
+#: home/templates/home/base.html:53
+msgid "Usuarios"
+msgstr "Users"
+
+#: home/templates/home/base.html:68
+msgid "Hola"
+msgstr "Hi"
+
+#: home/templates/home/base.html:72
+msgid "Salir"
+msgstr "Logout"
+
+#: home/templates/home/base.html:79
+msgid "Ingresar"
+msgstr "Login"
+
+#: home/templates/home/base.html:96
+#, fuzzy
+#| msgid "Sistema de Gestión"
+msgid "Sistema de Gestion"
+msgstr "Management System"
+
+#: sist_gestion/settings.py:128
+msgid "Español"
+msgstr "Spanish"
+
+#: sist_gestion/settings.py:129
+msgid "Inglés"
+msgstr "English"
