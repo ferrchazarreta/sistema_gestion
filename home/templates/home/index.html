@@ -3,20 +3,6 @@
 {% block content %}
 {% load i18n %}
 
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}" />
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go" />
-</form>
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
@@ -24,10 +10,10 @@
                 height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">COMPRÁ TU VEHÍCULO FAVORITO AQUÍ</h1>
-            <p class="lead">Explora nuestra amplia selección de vehículos y encuentra el auto perfecto para ti. Con opciones para todos los gustos y presupuestos, te garantizamos calidad y confianza en cada compra. No pierdas la oportunidad de hacer realidad tu sueño de conducir el auto ideal. ¡Visítanos y haz tu compra hoy mismo!.</p>
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{% trans "COMPRÁ TU VEHÍCULO FAVORITO AQUÍ" %}</h1>
+            <p class="lead">{% trans "Explora nuestra amplia selección de vehículos y encuentra el auto perfecto para ti. Con opciones para todos los gustos y presupuestos, te garantizamos calidad y confianza en cada compra. No pierdas la oportunidad de hacer realidad tu sueño de conducir el auto ideal. ¡Visítanos y haz tu compra hoy mismo!." %}</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a class="btn btn-warning btn-lg px-4 me-md-2" href="{% url 'vehiculo_list' %}">Información</a>
+                <a class="btn btn-warning btn-lg px-4 me-md-2" href="{% url 'vehiculo_list' %}">{% trans "Información" %}</a>
             </div>
         </div>
     </div>

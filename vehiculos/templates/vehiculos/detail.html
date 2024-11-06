@@ -1,5 +1,6 @@
 {% extends "home/base.html" %}
 {% block content %}
+{% load i18n %}
 
 <div class="container mt-3">
     <h2 class=" ms-5">{{car.model_car}}</h2>
@@ -9,20 +10,20 @@
     </div>
     <div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Combustible: {{car.fuel_type.name}}</li>
-            <li class="list-group-item">Cilindrada: {{ car.cilindrada }}</li>
-            <li class="list-group-item">Precio: ${{ car.price}}</li>
-            <li class="list-group-item">Pais: {{ car.country_production}}</li> 
-            <li class="list-group-item">Cant. de Puertas: {{ car.door_quatity}}</li> 
-            <li class="list-group-item">Gama: {{ car.gama}}</li>
-            <li class="list-group-item">Transmision: {{ car.transmission}}</li>
-            <li class="list-group-item">Carroceria: {{ car.bodyWork}}</li> 
-            <li class="list-group-item">Condicion: {{ car.condition}}</li> 
-            <li class="list-group-item">Kilometros: {{ car.km}}</li>
+            <li class="list-group-item">{% trans "Combustible" %}: {{car.fuel_type.name}}</li>
+            <li class="list-group-item">{% trans "Cilindrada" %}: {{ car.cilindrada }}</li>
+            <li class="list-group-item">{% trans "Precio" %}: ${{ car.price}}</li>
+            <li class="list-group-item">{% trans "Pais" %}: {{ car.country_production}}</li> 
+            <li class="list-group-item">{% trans "Cantidad de puertas" %}: {{ car.door_quatity}}</li> 
+            <li class="list-group-item">{% trans "Gama" %}: {{ car.gama}}</li>
+            <li class="list-group-item">{% trans "Transmision" %}: {{ car.transmission}}</li>
+            <li class="list-group-item">{% trans "Carroceria" %}: {{ car.bodyWork}}</li> 
+            <li class="list-group-item">{% trans "Condicion" %}: {{ car.condition}}</li> 
+            <li class="list-group-item">{% trans "Kilometros" %}: {{ car.km}}</li>
 
         </ul> 
     </div>
-    <a class="btn btn-secondary my-3" href="{% url 'vehiculo_list' %}">Volver a la Lista</a>
+    <a class="btn btn-secondary my-3" href="{% url 'vehiculo_list' %}">{% trans "Volver a la lista" %}</a>
 </div>
 
 {% endblock %}

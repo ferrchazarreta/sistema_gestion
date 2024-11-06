@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-06 02:44+0000\n"
+"POT-Creation-Date: 2024-11-06 13:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,43 +28,64 @@ msgstr "Vehicle Management System"
 msgid "Sistema de Gestión"
 msgstr "Management System"
 
-#: home/templates/home/base.html:36
+#: home/templates/home/base.html:52
 msgid "Vehículos"
 msgstr "Cars"
 
-#: home/templates/home/base.html:39
+#: home/templates/home/base.html:55
 msgid "Noticias"
 msgstr "News"
 
-#: home/templates/home/base.html:42
+#: home/templates/home/base.html:58
 msgid "Testimonios"
 msgstr "Testimonials"
 
-#: home/templates/home/base.html:50
+#: home/templates/home/base.html:66
 msgid "Clientes"
 msgstr "Clients"
 
-#: home/templates/home/base.html:53
+#: home/templates/home/base.html:69
 msgid "Usuarios"
 msgstr "Users"
 
-#: home/templates/home/base.html:68
+#: home/templates/home/base.html:84
 msgid "Hola"
 msgstr "Hi"
 
-#: home/templates/home/base.html:72
+#: home/templates/home/base.html:88
 msgid "Salir"
 msgstr "Logout"
 
-#: home/templates/home/base.html:79
+#: home/templates/home/base.html:95
 msgid "Ingresar"
 msgstr "Login"
 
-#: home/templates/home/base.html:96
+#: home/templates/home/base.html:112
 #, fuzzy
 #| msgid "Sistema de Gestión"
 msgid "Sistema de Gestion"
 msgstr "Management System"
+
+#: home/templates/home/index.html:13
+msgid "COMPRÁ TU VEHÍCULO FAVORITO AQUÍ"
+msgstr "BUY YOUR CAR HERE"
+
+#: home/templates/home/index.html:14
+msgid ""
+"Explora nuestra amplia selección de vehículos y encuentra el auto perfecto "
+"para ti. Con opciones para todos los gustos y presupuestos, te garantizamos "
+"calidad y confianza en cada compra. No pierdas la oportunidad de hacer "
+"realidad tu sueño de conducir el auto ideal. ¡Visítanos y haz tu compra hoy "
+"mismo!."
+msgstr ""
+"Explore our wide selection of vehicles and find the perfect car for you. "
+"With options for all tastes and budgets, we guarantee quality and confidence "
+"in every purchase. Don't miss the opportunity to make your dream of driving "
+"the ideal car come true. Visit us and make your purchase today!"
+
+#: home/templates/home/index.html:16
+msgid "Información"
+msgstr "Information"
 
 #: sist_gestion/settings.py:128
 msgid "Español"
@@ -73,3 +94,90 @@ msgstr "Spanish"
 #: sist_gestion/settings.py:129
 msgid "Inglés"
 msgstr "English"
+
+
+#: vehiculos/templates/vehiculo_review/list.html:5
+msgid "Lista de Opiniones"
+msgstr "Opinion List"
+
+#: vehiculos/templates/vehiculo_review/list.html:7
+msgid "Dar Opinion"
+msgstr "Give an Opinion"
+
+#: vehiculos/templates/vehiculo_review/list.html:12
+#, fuzzy
+#| msgid "Vehículos"
+msgid "Vehiculo"
+msgstr "Cars"
+
+#: vehiculos/templates/vehiculo_review/list.html:13
+msgid "Autor"
+msgstr "Author"
+
+#: vehiculos/templates/vehiculo_review/list.html:14
+msgid "Opinion"
+msgstr "Opinion"
+
+#: vehiculos/templates/vehiculo_review/list.html:15
+msgid "Fecha"
+msgstr "Date"
+
+#: vehiculos/templates/vehiculo_review/list.html:16
+msgid "Valoracion"
+msgstr "Rating"
+
+#: vehiculos/templates/vehiculo_review/list.html:28
+msgid "Detalle"
+msgstr "Detail"
+
+#: vehiculos/templates/vehiculo_review/list.html:31
+msgid "Editar"
+msgstr "Edit"
+
+#: vehiculos/templates/vehiculo_review/list.html:33
+msgid "Eliminar"
+msgstr "Delete"
+
+#: vehiculos/templates/vehiculos/detail.html:13
+msgid "Combustible"
+msgstr "Fuel"
+
+#: vehiculos/templates/vehiculos/detail.html:14
+msgid "Cilindrada"
+msgstr "Displacement"
+
+#: vehiculos/templates/vehiculos/detail.html:15
+msgid "Precio"
+msgstr "Price"
+
+#: vehiculos/templates/vehiculos/detail.html:16
+msgid "Pais"
+msgstr "Country"
+
+#: vehiculos/templates/vehiculos/detail.html:17
+msgid "Cantidad de puertas"
+msgstr "Amount Doors"
+
+#: vehiculos/templates/vehiculos/detail.html:18
+msgid "Gama"
+msgstr "Range"
+
+#: vehiculos/templates/vehiculos/detail.html:19
+msgid "Transmision"
+msgstr "Transmission"
+
+#: vehiculos/templates/vehiculos/detail.html:20
+msgid "Carroceria"
+msgstr "Bodywork"
+
+#: vehiculos/templates/vehiculos/detail.html:21
+msgid "Condicion"
+msgstr "Condition"
+
+#: vehiculos/templates/vehiculos/detail.html:22
+msgid "Kilometros"
+msgstr "Kilometers"
+
+#: vehiculos/templates/vehiculos/detail.html:26
+msgid "Volver a la lista"
+msgstr "Back list"
