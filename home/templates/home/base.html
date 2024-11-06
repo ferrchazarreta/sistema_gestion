@@ -42,24 +42,7 @@
                         </li>
                         <li class="nav-item m-1" href="">
                             <a class="nav-link fw-bold" href="{% url 'review_list' %}">{% trans "Testimonios" %}</a>
-                        </li>
-                        <form action="{% url 'set_language' %}" method="post" id="languageForm" class="flex items-center">
-                            {% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}" />
-                            
-                            <select name="language" 
-                                    onchange="document.getElementById('languageForm').submit();"
-                                    class="px-2 py-2 border btn m-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-40">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                        {{ language.name_local }} ({{ language.code }})
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </form>                        
+                        </li>                        
                         {% if user.is_authenticated %}
                         <li class="nav-item m-1 fw-bold pt-2">
 
@@ -73,6 +56,22 @@
                         </li>
                         {% endif %}
                         {% endif %}
+                        <form action="{% url 'set_language' %}" method="post" id="languageForm" class="flex items-center">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}" />
+                            <select name="language" 
+                                    onchange="document.getElementById('languageForm').submit();"
+                                    class="px-2 py-2 border btn m-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-40">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
                         {% if user.is_authenticated %}
                         <li class="nav-item m-1">
                             <div class="btn-group">
