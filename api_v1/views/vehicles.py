@@ -96,7 +96,7 @@ class CarViewSet(viewsets.ModelViewSet):
 class VehiculoReviewViewSet(viewsets.ModelViewSet):
     queryset = VehiculoReview.objects.all()
     serializer_class = VehiculoReviewSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
         vehiculo_id = self.kwargs.get("vehiculo_id")

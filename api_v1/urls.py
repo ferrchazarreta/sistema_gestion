@@ -5,6 +5,8 @@ from .views.vehicles import (
 )
 from .views.clients import ClienteViewSet
 from .views.users import UserViewSet
+from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.DefaultRouter()
 router.register(r'countries', CountryViewSet)
@@ -20,4 +22,6 @@ router.register(r'cars/(?P<vehiculo_id>[^/.]+)/reviews', VehiculoReviewViewSet) 
 router.register(r'usuarios', UserViewSet)
 router.register(r'clientes', ClienteViewSet)
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [
+    path('login_api', obtain_auth_token, name='login_api'), #acomodar esta ruta porque no se muestra: api_v1/login_api
+]
